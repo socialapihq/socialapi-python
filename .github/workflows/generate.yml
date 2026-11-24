@@ -46,6 +46,16 @@ jobs:
           distribution: microsoft
           java-version: 21
 
+      # The npm wrapper downloads the generator's jar on first use; fetch it up front, with
+      # retries, so a slow download does not fail the generation step.
+      - name: Fetch OpenAPI Generator
+        run: |
+          for attempt in 1 2 3; do
+            npx --yes @openapitools/openapi-generator-cli version && exit 0
+            sleep $((attempt * 5))
+          done
+          exit 1
+
       - name: Compute the next version
         id: version
         run: |
