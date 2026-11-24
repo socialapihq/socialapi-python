@@ -121,6 +121,6 @@ def endpoints(spec: dict[str, Any]) -> list[Endpoint]:
 
 
 def tags_in_order(items: list[Endpoint]) -> list[str]:
-    """Networks alphabetically, the account last."""
+    """Platforms alphabetically, the account last."""
     tags = sorted({e.tag for e in items})
     return [t for t in tags if t != "Account"] + [t for t in tags if t == "Account"]
