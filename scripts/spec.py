@@ -18,7 +18,9 @@ def load() -> dict[str, Any]:
     parser.add_argument("--spec", default=os.environ.get("SPEC", "https://api.socialapi.sh/openapi.json"))
     source = parser.parse_args().spec
     if re.match(r"^https?://", source):
-        with urllib.request.urlopen(source) as response:  # noqa: S310 - our own spec
+        # Cloudflare refuses urllib's own User-Agent ("Python-urllib/3.x") with a 403.
+        request = urllib.request.Request(source, headers={"User-Agent": "socialapi-python-generator"})
+        with urllib.request.urlopen(request) as response:  # noqa: S310 - our own spec
             return json.load(response)
     with open(source, encoding="utf-8") as file:
         return json.load(file)
