@@ -14,13 +14,23 @@ import urllib3
 from socialapihq.api_client import ApiClient
 from socialapihq.configuration import Configuration
 from socialapihq.exceptions import ApiException
+from socialapihq.api.bluesky_api import BlueskyApi
 from socialapihq.api.facebook_api import FacebookApi
 from socialapihq.api.instagram_api import InstagramApi
+from socialapihq.api.pinterest_api import PinterestApi
+from socialapihq.api.reddit_api import RedditApi
 from socialapihq.api.threads_api import ThreadsApi
 from socialapihq.api.tik_tok_api import TikTokApi
+from socialapihq.api.twitch_api import TwitchApi
+from socialapihq.api.you_tube_api import YouTubeApi
 from socialapihq.api.account_api import AccountApi
 from socialapihq.models import (
     CreditsBody,
+    ItemBlueskyFeed,
+    ItemBlueskyList,
+    ItemBlueskyPost,
+    ItemBlueskyProfile,
+    ItemBlueskyStarterPack,
     ItemFacebookEvent,
     ItemFacebookListing,
     ItemFacebookPost,
@@ -30,6 +40,15 @@ from socialapihq.models import (
     ItemInstagramPost,
     ItemInstagramProfile,
     ItemInstagramSound,
+    ItemPinterestBoard,
+    ItemPinterestPost,
+    ItemPinterestProfile,
+    ItemPinterestTopic,
+    ItemPinterestUrlSaves,
+    ItemRedditPost,
+    ItemRedditProfile,
+    ItemRedditSubreddit,
+    ItemRedditTranscript,
     ItemThreadsPost,
     ItemThreadsProfile,
     ItemTikTokHashtag,
@@ -38,6 +57,23 @@ from socialapihq.models import (
     ItemTikTokProfile,
     ItemTikTokSound,
     ItemTikTokTranscript,
+    ItemTwitchCategory,
+    ItemTwitchLive,
+    ItemTwitchPost,
+    ItemTwitchProfile,
+    ItemYouTubeHashtag,
+    ItemYouTubePlaylist,
+    ItemYouTubePost,
+    ItemYouTubeProfile,
+    ItemYouTubeTranscript,
+    ListBlueskyComment,
+    ListBlueskyFeed,
+    ListBlueskyLike,
+    ListBlueskyList,
+    ListBlueskyPost,
+    ListBlueskyProfile,
+    ListBlueskyStarterPack,
+    ListBlueskyTrend,
     ListFacebookComment,
     ListFacebookEvent,
     ListFacebookListing,
@@ -47,6 +83,17 @@ from socialapihq.models import (
     ListInstagramPost,
     ListInstagramProfile,
     ListInstagramTrend,
+    ListPinterestBoard,
+    ListPinterestComment,
+    ListPinterestPost,
+    ListPinterestProfile,
+    ListPinterestSection,
+    ListPinterestTrend,
+    ListRedditComment,
+    ListRedditPost,
+    ListRedditProfile,
+    ListRedditSubreddit,
+    ListSuggestion,
     ListThreadsComment,
     ListThreadsPost,
     ListThreadsProfile,
@@ -54,6 +101,17 @@ from socialapihq.models import (
     ListTikTokPlaylist,
     ListTikTokPost,
     ListTikTokProfile,
+    ListTwitchCategory,
+    ListTwitchComment,
+    ListTwitchLive,
+    ListTwitchPost,
+    ListTwitchProfile,
+    ListTwitchScheduleSegment,
+    ListYouTubeComment,
+    ListYouTubePlaylist,
+    ListYouTubePost,
+    ListYouTubeProfile,
+    ListYouTubeTranscript,
 )
 
 T = TypeVar("T")
@@ -125,6 +183,393 @@ def _call(request: Callable[..., T], **params: Any) -> T:
         raise SocialAPIError(
             f"Could not reach SocialAPI: {error}.", status=0, code="NETWORK_ERROR"
         ) from error
+
+
+class BlueskyEndpoints:
+    """Bluesky's endpoints, as ``client.bluesky``."""
+
+    def __init__(self, api: BlueskyApi, timeout: Optional[float]) -> None:
+        self._api = api
+        self._timeout = timeout
+
+    def batch_posts(self, *, ids: str) -> ListBlueskyPost:
+        """Up to 25 posts at once, by their ids or links.
+        
+        ``GET /v1/bluesky/batch/posts``
+        
+        Args:
+            ids: Up to 25 posts, comma-separated: their AT-URIs (their `id`s) or bsky.app links.
+        """
+        return _call(self._api.bluesky_batch_posts, _request_timeout=self._timeout, ids=ids)
+
+    def batch_profiles(self, *, handles: str) -> ListBlueskyProfile:
+        """Up to 25 accounts at once, by handle or DID.
+        
+        ``GET /v1/bluesky/batch/profiles``
+        
+        Args:
+            handles: Up to 25 handles or DIDs, comma-separated.
+        """
+        return _call(self._api.bluesky_batch_profiles, _request_timeout=self._timeout, handles=handles)
+
+    def feed(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemBlueskyFeed:
+        """A feed with its description and likes.
+        
+        ``GET /v1/bluesky/feed``
+        
+        Args:
+            url: Its bsky.app link.
+            id: Its AT-URI (the `id` its answers give it), instead of `url`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_feed, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
+
+    def feed_posts(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyPost:
+        """A feed's posts, 50 a page.
+        
+        ``GET /v1/bluesky/feed/posts``
+        
+        Args:
+            url: Its bsky.app link.
+            id: Its AT-URI (the `id` its answers give it), instead of `url`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_feed_posts, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
+
+    def hashtag_posts(self, *, name: str, sort: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyPost:
+        """A hashtag's posts, 50 a page.
+        
+        ``GET /v1/bluesky/hashtag/posts``
+        
+        Args:
+            name: The hashtag, without `#`.
+            sort: `top` (by relevance, the default: one page) or `latest` (newest first, paged).
+            cursor: `nextCursor` of the previous page (with `sort=latest`).
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_hashtag_posts, _request_timeout=self._timeout, name=name, sort=sort, cursor=cursor, max_age=max_age)
+
+    def list(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemBlueskyList:
+        """A list with its purpose and member count.
+        
+        ``GET /v1/bluesky/list``
+        
+        Args:
+            url: Its bsky.app link.
+            id: Its AT-URI (the `id` its answers give it), instead of `url`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_list, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
+
+    def list_members(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyProfile:
+        """A list's accounts, 100 a page.
+        
+        ``GET /v1/bluesky/list/members``
+        
+        Args:
+            url: Its bsky.app link.
+            id: Its AT-URI (the `id` its answers give it), instead of `url`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_list_members, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
+
+    def list_posts(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyPost:
+        """The posts of a list's accounts, 50 a page.
+        
+        ``GET /v1/bluesky/list/posts``
+        
+        Args:
+            url: Its bsky.app link.
+            id: Its AT-URI (the `id` its answers give it), instead of `url`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_list_posts, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
+
+    def post(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemBlueskyPost:
+        """One post with its likes, replies, reposts and quotes.
+        
+        ``GET /v1/bluesky/post``
+        
+        Args:
+            url: Its bsky.app link.
+            id: Its AT-URI (the `id` its answers give it), instead of `url`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_post, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
+
+    def post_comments(self, *, url: Optional[str] = None, id: Optional[str] = None, sort: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyComment:
+        """A post's replies, and the replies to them.
+        
+        ``GET /v1/bluesky/post/comments``
+        
+        Args:
+            url: The post's bsky.app link.
+            id: The post's AT-URI (its `id`), instead of `url`.
+            sort: `top` (the most liked first, the default), `newest` or `oldest`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_post_comments, _request_timeout=self._timeout, url=url, id=id, sort=sort, max_age=max_age)
+
+    def post_likes(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyLike:
+        """The accounts that liked a post, 100 a page.
+        
+        ``GET /v1/bluesky/post/likes``
+        
+        Args:
+            url: Its bsky.app link.
+            id: Its AT-URI (the `id` its answers give it), instead of `url`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_post_likes, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
+
+    def post_quotes(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyPost:
+        """The posts quoting a post, 50 a page.
+        
+        ``GET /v1/bluesky/post/quotes``
+        
+        Args:
+            url: Its bsky.app link.
+            id: Its AT-URI (the `id` its answers give it), instead of `url`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_post_quotes, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
+
+    def post_reposts(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyProfile:
+        """The accounts that reposted a post, 100 a page.
+        
+        ``GET /v1/bluesky/post/reposts``
+        
+        Args:
+            url: Its bsky.app link.
+            id: Its AT-URI (the `id` its answers give it), instead of `url`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_post_reposts, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
+
+    def profile(self, *, handle: Optional[str] = None, url: Optional[str] = None, max_age: Optional[int] = None) -> ItemBlueskyProfile:
+        """An account with its follower and post counts.
+        
+        ``GET /v1/bluesky/profile``
+        
+        Args:
+            handle: The account's handle (`bsky.app`) or DID.
+            url: The profile's link (`https://bsky.app/profile/bsky.app`), instead of `handle`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_profile, _request_timeout=self._timeout, handle=handle, url=url, max_age=max_age)
+
+    def profile_feeds(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyFeed:
+        """The feeds an account made, 50 a page.
+        
+        ``GET /v1/bluesky/profile/feeds``
+        
+        Args:
+            handle: The account's handle (`bsky.app`) or DID.
+            url: The profile's link, instead of `handle`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_profile_feeds, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
+
+    def profile_followers(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyProfile:
+        """The accounts following an account, 100 a page.
+        
+        ``GET /v1/bluesky/profile/followers``
+        
+        Args:
+            handle: The account's handle (`bsky.app`) or DID.
+            url: The profile's link, instead of `handle`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_profile_followers, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
+
+    def profile_following(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyProfile:
+        """The accounts an account follows, 100 a page.
+        
+        ``GET /v1/bluesky/profile/following``
+        
+        Args:
+            handle: The account's handle (`bsky.app`) or DID.
+            url: The profile's link, instead of `handle`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_profile_following, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
+
+    def profile_lists(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyList:
+        """The lists an account made, 50 a page.
+        
+        ``GET /v1/bluesky/profile/lists``
+        
+        Args:
+            handle: The account's handle (`bsky.app`) or DID.
+            url: The profile's link, instead of `handle`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_profile_lists, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
+
+    def profile_media(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyPost:
+        """An account's posts with images or video.
+        
+        ``GET /v1/bluesky/profile/media``
+        
+        Args:
+            handle: The account's handle (`bsky.app`) or DID.
+            url: The profile's link, instead of `handle`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_profile_media, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
+
+    def profile_posts(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyPost:
+        """An account's posts and reposts, newest first.
+        
+        ``GET /v1/bluesky/profile/posts``
+        
+        Args:
+            handle: The account's handle (`bsky.app`) or DID.
+            url: The profile's link, instead of `handle`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_profile_posts, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
+
+    def profile_replies(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyPost:
+        """An account's posts with its replies, newest first.
+        
+        ``GET /v1/bluesky/profile/replies``
+        
+        Args:
+            handle: The account's handle (`bsky.app`) or DID.
+            url: The profile's link, instead of `handle`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_profile_replies, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
+
+    def profile_starter_packs(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyStarterPack:
+        """The starter packs an account made, 50 a page.
+        
+        ``GET /v1/bluesky/profile/starter-packs``
+        
+        Args:
+            handle: The account's handle (`bsky.app`) or DID.
+            url: The profile's link, instead of `handle`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_profile_starter_packs, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
+
+    def profile_videos(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyPost:
+        """An account's posts with video.
+        
+        ``GET /v1/bluesky/profile/videos``
+        
+        Args:
+            handle: The account's handle (`bsky.app`) or DID.
+            url: The profile's link, instead of `handle`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_profile_videos, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
+
+    def search(self, *, query: str, sort: Optional[str] = None, since: Optional[str] = None, until: Optional[str] = None, language: Optional[str] = None, author: Optional[str] = None, mentions: Optional[str] = None, domain: Optional[str] = None, link: Optional[str] = None, tag: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyPost:
+        """Posts matching a query, 50 a page.
+        
+        ``GET /v1/bluesky/search``
+        
+        Args:
+            query: What to search for.
+            sort: `top` (by relevance, the default: one page) or `latest` (newest first, paged).
+            since: Only posts from this time on (`2026-11-01T00:00:00Z`, or a date).
+            until: Only posts before this time.
+            language: Only posts in this language (`en`, `tr`).
+            author: Only posts by this account (a handle or a DID).
+            mentions: Only posts mentioning this account.
+            domain: Only posts linking to this domain (`nytimes.com`).
+            link: Only posts linking to this address.
+            tag: Only posts with these hashtags, comma-separated, without `#`.
+            cursor: `nextCursor` of the previous page (with `sort=latest`).
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_search, _request_timeout=self._timeout, query=query, sort=sort, since=since, until=until, language=language, author=author, mentions=mentions, domain=domain, link=link, tag=tag, cursor=cursor, max_age=max_age)
+
+    def search_feeds(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyFeed:
+        """Feeds matching a query, the most liked first.
+        
+        ``GET /v1/bluesky/search/feeds``
+        
+        Args:
+            query: What to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_search_feeds, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def search_starter_packs(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyStarterPack:
+        """Starter packs matching a query, 50 a page.
+        
+        ``GET /v1/bluesky/search/starter-packs``
+        
+        Args:
+            query: What to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_search_starter_packs, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def search_users(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyProfile:
+        """Accounts matching a query, 100 a page.
+        
+        ``GET /v1/bluesky/search/users``
+        
+        Args:
+            query: What to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_search_users, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def starter_pack(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemBlueskyStarterPack:
+        """A starter pack with its accounts' list and feeds.
+        
+        ``GET /v1/bluesky/starter-pack``
+        
+        Args:
+            url: Its bsky.app link.
+            id: Its AT-URI (the `id` its answers give it), instead of `url`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_starter_pack, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
+
+    def trending(self, *, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListBlueskyPost:
+        """The posts of Bluesky's Discover feed, 50 a page.
+        
+        ``GET /v1/bluesky/trending``
+        
+        Args:
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_trending, _request_timeout=self._timeout, cursor=cursor, max_age=max_age)
+
+    def trending_topics(self, *, max_age: Optional[int] = None) -> ListBlueskyTrend:
+        """The topics trending now, up to 25.
+        
+        ``GET /v1/bluesky/trending/topics``
+        
+        Args:
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.bluesky_trending_topics, _request_timeout=self._timeout, max_age=max_age)
 
 
 class FacebookEndpoints:
@@ -486,6 +931,473 @@ class InstagramEndpoints:
             max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
         """
         return _call(self._api.instagram_trending_topics, _request_timeout=self._timeout, max_age=max_age)
+
+
+class PinterestEndpoints:
+    """Pinterest's endpoints, as ``client.pinterest``."""
+
+    def __init__(self, api: PinterestApi, timeout: Optional[float]) -> None:
+        self._api = api
+        self._timeout = timeout
+
+    def board(self, *, url: str, max_age: Optional[int] = None) -> ItemPinterestBoard:
+        """A board with its pin and follower counts.
+        
+        ``GET /v1/pinterest/board``
+        
+        Args:
+            url: The board's link (`https://www.pinterest.com/nasa/learn-with-nasa/`).
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_board, _request_timeout=self._timeout, url=url, max_age=max_age)
+
+    def board_posts(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListPinterestPost:
+        """A board's pins, 25 a page.
+        
+        ``GET /v1/pinterest/board/posts``
+        
+        Args:
+            url: The board's link.
+            id: The board's id, instead of `url`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_board_posts, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
+
+    def board_section_posts(self, *, id: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListPinterestPost:
+        """A board section's pins, about 25 a page.
+        
+        ``GET /v1/pinterest/board/section/posts``
+        
+        Args:
+            id: The section's id, from `/v1/pinterest/board/sections`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_board_section_posts, _request_timeout=self._timeout, id=id, cursor=cursor, max_age=max_age)
+
+    def board_sections(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ListPinterestSection:
+        """A board's sections with their pin counts.
+        
+        ``GET /v1/pinterest/board/sections``
+        
+        Args:
+            url: The board's link.
+            id: The board's id, instead of `url`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_board_sections, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
+
+    def post(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemPinterestPost:
+        """One pin with its saves, reactions and comment count.
+        
+        ``GET /v1/pinterest/post``
+        
+        Args:
+            url: The pin's link (`https://www.pinterest.com/pin/142567144449130105/`), or a `pin.it` link.
+            id: The pin's id, instead of `url`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_post, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
+
+    def post_comment_replies(self, *, id: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListPinterestComment:
+        """A comment's replies, 25 a page.
+        
+        ``GET /v1/pinterest/post/comment/replies``
+        
+        Args:
+            id: The comment's id.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_post_comment_replies, _request_timeout=self._timeout, id=id, cursor=cursor, max_age=max_age)
+
+    def post_comments(self, *, url: Optional[str] = None, id: Optional[str] = None, comments_id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListPinterestComment:
+        """A pin's comments, 25 a page.
+        
+        ``GET /v1/pinterest/post/comments``
+        
+        Args:
+            url: The pin's link.
+            id: The pin's id, instead of `url`.
+            comments_id: The pin's `ext.commentsId`, instead of either: what an encrypted pin (`e1_…`, from search or a board) is read by.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_post_comments, _request_timeout=self._timeout, url=url, id=id, comments_id=comments_id, cursor=cursor, max_age=max_age)
+
+    def profile(self, *, handle: Optional[str] = None, url: Optional[str] = None, max_age: Optional[int] = None) -> ItemPinterestProfile:
+        """A profile with its follower and pin counts.
+        
+        ``GET /v1/pinterest/profile``
+        
+        Args:
+            handle: The username.
+            url: The profile's link (`https://www.pinterest.com/nasa/`), instead of `handle`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_profile, _request_timeout=self._timeout, handle=handle, url=url, max_age=max_age)
+
+    def profile_boards(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListPinterestBoard:
+        """An account's boards, 25 a page.
+        
+        ``GET /v1/pinterest/profile/boards``
+        
+        Args:
+            handle: The username.
+            url: The profile's link, instead of `handle`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_profile_boards, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
+
+    def profile_posts(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListPinterestPost:
+        """The pins an account created, newest first, 25 a page.
+        
+        ``GET /v1/pinterest/profile/posts``
+        
+        Args:
+            handle: The username.
+            url: The profile's link, instead of `handle`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_profile_posts, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
+
+    def search(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListPinterestPost:
+        """Pins matching a query, about 25 a page.
+        
+        ``GET /v1/pinterest/search``
+        
+        Args:
+            query: What to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_search, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def search_boards(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListPinterestBoard:
+        """Boards matching a query, about 50 a page.
+        
+        ``GET /v1/pinterest/search/boards``
+        
+        Args:
+            query: What to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_search_boards, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def search_suggestions(self, *, query: str, max_age: Optional[int] = None) -> ListSuggestion:
+        """What the search box suggests for a few letters.
+        
+        ``GET /v1/pinterest/search/suggestions``
+        
+        Args:
+            query: The first letters of a search.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_search_suggestions, _request_timeout=self._timeout, query=query, max_age=max_age)
+
+    def search_users(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListPinterestProfile:
+        """Accounts matching a query, about 48 a page.
+        
+        ``GET /v1/pinterest/search/users``
+        
+        Args:
+            query: What to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_search_users, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def search_videos(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListPinterestPost:
+        """Video pins matching a query, 25 a page.
+        
+        ``GET /v1/pinterest/search/videos``
+        
+        Args:
+            query: What to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_search_videos, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def topic(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemPinterestTopic:
+        """A topic's Ideas page with its followers and searches.
+        
+        ``GET /v1/pinterest/topic``
+        
+        Args:
+            url: The topic's Ideas page (`https://www.pinterest.com/ideas/coffee-shop/939226065359/`).
+            id: The topic's id, instead of `url`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_topic, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
+
+    def topic_posts(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ListPinterestPost:
+        """A topic's top pins, about 20.
+        
+        ``GET /v1/pinterest/topic/posts``
+        
+        Args:
+            url: The topic's Ideas page (`https://www.pinterest.com/ideas/coffee-shop/939226065359/`).
+            id: The topic's id, instead of `url`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_topic_posts, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
+
+    def trending(self, *, country: Optional[str] = None, type: Optional[str] = None, max_age: Optional[int] = None) -> ListPinterestTrend:
+        """What a country searches for on Pinterest Trends.
+        
+        ``GET /v1/pinterest/trending``
+        
+        Args:
+            country: The country, as a two-letter code (`us`, the default). Pinterest Trends covers the US, Canada, most of Europe, Latin America and Australia; it pairs the UK with Ireland and Australia with New Zealand.
+            type: `growing` (the default), `monthly`, `yearly` or `seasonal`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_trending, _request_timeout=self._timeout, country=country, type=type, max_age=max_age)
+
+    def url(self, *, url: str, max_age: Optional[int] = None) -> ItemPinterestUrlSaves:
+        """How many times a web page was saved to Pinterest.
+        
+        ``GET /v1/pinterest/url``
+        
+        Args:
+            url: The page's address (`https://www.nasa.gov/`).
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.pinterest_url, _request_timeout=self._timeout, url=url, max_age=max_age)
+
+
+class RedditEndpoints:
+    """Reddit's endpoints, as ``client.reddit``."""
+
+    def __init__(self, api: RedditApi, timeout: Optional[float]) -> None:
+        self._api = api
+        self._timeout = timeout
+
+    def post(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemRedditPost:
+        """One post with its score, comment count and media.
+        
+        ``GET /v1/reddit/post``
+        
+        Args:
+            url: The post's link (`https://www.reddit.com/r/AskReddit/comments/1y4hcb5/…`), or a `redd.it` one.
+            id: The post's id (`1y4hcb5`), instead of `url`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_post, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
+
+    def post_comment_replies(self, *, url: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListRedditComment:
+        """A comment's replies, 10 a page.
+        
+        ``GET /v1/reddit/post/comment/replies``
+        
+        Args:
+            url: The comment's link (its `ext.url`: `https://www.reddit.com/r/AskReddit/comments/1y4hcb5/comment/19t4kwq1qez37/`).
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_post_comment_replies, _request_timeout=self._timeout, url=url, cursor=cursor, max_age=max_age)
+
+    def post_comments(self, *, url: Optional[str] = None, id: Optional[str] = None, sort: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListRedditComment:
+        """A post's comments with their replies, a page at a time.
+        
+        ``GET /v1/reddit/post/comments``
+        
+        Args:
+            url: The post's link.
+            id: The post's id, instead of `url`.
+            sort: `best` (the default), `top`, `new`, `old`, `controversial` or `qa`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_post_comments, _request_timeout=self._timeout, url=url, id=id, sort=sort, cursor=cursor, max_age=max_age)
+
+    def post_transcript(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemRedditTranscript:
+        """A video post's captions as text.
+        
+        ``GET /v1/reddit/post/transcript``
+        
+        Args:
+            url: The post's link (`https://www.reddit.com/r/AskReddit/comments/1y4hcb5/…`), or a `redd.it` one.
+            id: The post's id (`1y4hcb5`), instead of `url`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_post_transcript, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
+
+    def profile(self, *, handle: Optional[str] = None, url: Optional[str] = None, max_age: Optional[int] = None) -> ItemRedditProfile:
+        """A profile with its karma and trophies.
+        
+        ``GET /v1/reddit/profile``
+        
+        Args:
+            handle: The username, with or without `u/`.
+            url: The profile's link (`https://www.reddit.com/user/spez`), instead of `handle`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_profile, _request_timeout=self._timeout, handle=handle, url=url, max_age=max_age)
+
+    def profile_comments(self, *, handle: Optional[str] = None, url: Optional[str] = None, sort: Optional[str] = None, time: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListRedditComment:
+        """An account's comments, newest first, 25 a page.
+        
+        ``GET /v1/reddit/profile/comments``
+        
+        Args:
+            handle: The username, with or without `u/`.
+            url: The profile's link, instead of `handle`.
+            sort: `new` (the default), `hot`, `top` or `controversial`.
+            time: For `top` and `controversial`: `hour`, `day`, `week`, `month`, `year` or `all` (the default).
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_profile_comments, _request_timeout=self._timeout, handle=handle, url=url, sort=sort, time=time, cursor=cursor, max_age=max_age)
+
+    def profile_posts(self, *, handle: Optional[str] = None, url: Optional[str] = None, sort: Optional[str] = None, time: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListRedditPost:
+        """An account's posts, newest first, 25 a page.
+        
+        ``GET /v1/reddit/profile/posts``
+        
+        Args:
+            handle: The username, with or without `u/`.
+            url: The profile's link, instead of `handle`.
+            sort: `new` (the default), `hot`, `top` or `controversial`.
+            time: For `top` and `controversial`: `hour`, `day`, `week`, `month`, `year` or `all` (the default).
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_profile_posts, _request_timeout=self._timeout, handle=handle, url=url, sort=sort, time=time, cursor=cursor, max_age=max_age)
+
+    def search(self, *, query: str, sort: Optional[str] = None, time: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListRedditPost:
+        """Posts matching a query across Reddit, about 7 a page.
+        
+        ``GET /v1/reddit/search``
+        
+        Args:
+            query: What to search for.
+            sort: `relevance` (the default), `hot`, `top`, `new` or `comments`.
+            time: `hour`, `day`, `week`, `month`, `year` or `all` (the default).
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_search, _request_timeout=self._timeout, query=query, sort=sort, time=time, cursor=cursor, max_age=max_age)
+
+    def search_comments(self, *, query: str, sort: Optional[str] = None, time: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListRedditComment:
+        """Comments matching a query across Reddit, about 9 a page.
+        
+        ``GET /v1/reddit/search/comments``
+        
+        Args:
+            query: What to search for.
+            sort: `relevance` (the default), `hot`, `top`, `new` or `comments`.
+            time: `hour`, `day`, `week`, `month`, `year` or `all` (the default).
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_search_comments, _request_timeout=self._timeout, query=query, sort=sort, time=time, cursor=cursor, max_age=max_age)
+
+    def search_media(self, *, query: str, sort: Optional[str] = None, time: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListRedditPost:
+        """Image and video posts matching a query, about 7 a page.
+        
+        ``GET /v1/reddit/search/media``
+        
+        Args:
+            query: What to search for.
+            sort: `relevance` (the default), `hot`, `top`, `new` or `comments`.
+            time: `hour`, `day`, `week`, `month`, `year` or `all` (the default).
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_search_media, _request_timeout=self._timeout, query=query, sort=sort, time=time, cursor=cursor, max_age=max_age)
+
+    def search_subreddits(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListRedditSubreddit:
+        """Communities matching a query, 25 a page.
+        
+        ``GET /v1/reddit/search/subreddits``
+        
+        Args:
+            query: A name or a word to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_search_subreddits, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def search_users(self, *, query: str, max_age: Optional[int] = None) -> ListRedditProfile:
+        """Accounts matching a name, the first 25.
+        
+        ``GET /v1/reddit/search/users``
+        
+        Args:
+            query: A name to search for.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_search_users, _request_timeout=self._timeout, query=query, max_age=max_age)
+
+    def subreddit(self, *, name: Optional[str] = None, url: Optional[str] = None, max_age: Optional[int] = None) -> ItemRedditSubreddit:
+        """A community with its members, rules and weekly visitors.
+        
+        ``GET /v1/reddit/subreddit``
+        
+        Args:
+            name: The community's name, with or without `r/`.
+            url: Its link (`https://www.reddit.com/r/AskReddit/`), instead of `name`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_subreddit, _request_timeout=self._timeout, name=name, url=url, max_age=max_age)
+
+    def subreddit_posts(self, *, name: Optional[str] = None, url: Optional[str] = None, sort: Optional[str] = None, time: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListRedditPost:
+        """A community's posts, 25 a page.
+        
+        ``GET /v1/reddit/subreddit/posts``
+        
+        Args:
+            name: The community's name, with or without `r/`.
+            url: Its link, instead of `name`.
+            sort: `hot` (the default), `new`, `top`, `rising` or `controversial`.
+            time: For `top` and `controversial`: `hour`, `day`, `week`, `month`, `year` or `all` (the default).
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_subreddit_posts, _request_timeout=self._timeout, name=name, url=url, sort=sort, time=time, cursor=cursor, max_age=max_age)
+
+    def subreddit_search(self, *, query: str, name: Optional[str] = None, url: Optional[str] = None, sort: Optional[str] = None, time: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListRedditPost:
+        """Posts in one community matching a query, about 7 a page.
+        
+        ``GET /v1/reddit/subreddit/search``
+        
+        Args:
+            name: The community's name, with or without `r/`.
+            url: Its link, instead of `name`.
+            query: What to search for.
+            sort: `relevance` (the default), `hot`, `top`, `new` or `comments`.
+            time: `hour`, `day`, `week`, `month`, `year` or `all` (the default).
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_subreddit_search, _request_timeout=self._timeout, name=name, url=url, query=query, sort=sort, time=time, cursor=cursor, max_age=max_age)
+
+    def trending(self, *, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListRedditPost:
+        """What is hot on Reddit now, 25 a page.
+        
+        ``GET /v1/reddit/trending``
+        
+        Args:
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_trending, _request_timeout=self._timeout, cursor=cursor, max_age=max_age)
+
+    def trending_searches(self, *, max_age: Optional[int] = None) -> ListSuggestion:
+        """The searches Reddit shows as trending now.
+        
+        ``GET /v1/reddit/trending/searches``
+        
+        Args:
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.reddit_trending_searches, _request_timeout=self._timeout, max_age=max_age)
 
 
 class ThreadsEndpoints:
@@ -915,6 +1827,623 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_trending, _request_timeout=self._timeout, category=category, max_age=max_age)
 
 
+class TwitchEndpoints:
+    """Twitch's endpoints, as ``client.twitch``."""
+
+    def __init__(self, api: TwitchApi, timeout: Optional[float]) -> None:
+        self._api = api
+        self._timeout = timeout
+
+    def batch_live(self, *, handles: str) -> ListTwitchLive:
+        """Up to 100 channels' live status at once.
+        
+        ``GET /v1/twitch/batch/live``
+        
+        Args:
+            handles: Channels' logins, comma-separated: up to 100 for `/batch/live`, 50 for `/batch/profiles`.
+        """
+        return _call(self._api.twitch_batch_live, _request_timeout=self._timeout, handles=handles)
+
+    def batch_profiles(self, *, handles: str) -> ListTwitchProfile:
+        """Up to 50 channels at once, by their logins.
+        
+        ``GET /v1/twitch/batch/profiles``
+        
+        Args:
+            handles: Channels' logins, comma-separated: up to 100 for `/batch/live`, 50 for `/batch/profiles`.
+        """
+        return _call(self._api.twitch_batch_profiles, _request_timeout=self._timeout, handles=handles)
+
+    def category(self, *, name: Optional[str] = None, slug: Optional[str] = None, id: Optional[str] = None, url: Optional[str] = None, max_age: Optional[int] = None) -> ItemTwitchCategory:
+        """A category with its viewers, channels and followers.
+        
+        ``GET /v1/twitch/category``
+        
+        Args:
+            name: The category's name as written (`Just Chatting`).
+            slug: The name in its link (`just-chatting`), instead of `name`.
+            id: Its numeric id, instead of either.
+            url: Its link (`https://www.twitch.tv/directory/category/just-chatting`), instead of any.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_category, _request_timeout=self._timeout, name=name, slug=slug, id=id, url=url, max_age=max_age)
+
+    def category_clips(self, *, name: Optional[str] = None, slug: Optional[str] = None, id: Optional[str] = None, url: Optional[str] = None, period: Optional[str] = None, language: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTwitchPost:
+        """A category's clips, most viewed first, 30 a page.
+        
+        ``GET /v1/twitch/category/clips``
+        
+        Args:
+            name: The category's name as written (`Just Chatting`).
+            slug: The name in its link (`just-chatting`), instead of `name`.
+            id: Its numeric id, instead of either.
+            url: Its link, instead of any.
+            period: How far back: `day`, `week` (the default), `month` or `all`.
+            language: Only clips in this language (`en`, `tr`).
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_category_clips, _request_timeout=self._timeout, name=name, slug=slug, id=id, url=url, period=period, language=language, cursor=cursor, max_age=max_age)
+
+    def category_lives(self, *, name: Optional[str] = None, slug: Optional[str] = None, id: Optional[str] = None, url: Optional[str] = None, language: Optional[str] = None, tag: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTwitchLive:
+        """A category's live channels, most watched first.
+        
+        ``GET /v1/twitch/category/lives``
+        
+        Args:
+            name: The category's name as written (`Just Chatting`).
+            slug: The name in its link (`just-chatting`), instead of `name`.
+            id: Its numeric id, instead of either.
+            url: Its link, instead of any.
+            language: Only channels broadcasting in this language (`en`, `tr`).
+            tag: Only broadcasts with this tag (`DropsEnabled`).
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_category_lives, _request_timeout=self._timeout, name=name, slug=slug, id=id, url=url, language=language, tag=tag, cursor=cursor, max_age=max_age)
+
+    def category_posts(self, *, name: Optional[str] = None, slug: Optional[str] = None, id: Optional[str] = None, url: Optional[str] = None, sort: Optional[str] = None, language: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTwitchPost:
+        """A category's videos, 30 a page.
+        
+        ``GET /v1/twitch/category/posts``
+        
+        Args:
+            name: The category's name as written (`Just Chatting`).
+            slug: The name in its link (`just-chatting`), instead of `name`.
+            id: Its numeric id, instead of either.
+            url: Its link, instead of any.
+            sort: `views` (the default) or `latest`.
+            language: Only videos in this language (`en`, `tr`).
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_category_posts, _request_timeout=self._timeout, name=name, slug=slug, id=id, url=url, sort=sort, language=language, cursor=cursor, max_age=max_age)
+
+    def live(self, *, handle: Optional[str] = None, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemTwitchLive:
+        """Whether a channel is live, with its broadcast.
+        
+        ``GET /v1/twitch/live``
+        
+        Args:
+            handle: The channel's login: the name in its link.
+            url: The channel's link (`https://www.twitch.tv/shroud`), instead of `handle`.
+            id: The channel's numeric id, instead of either.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_live, _request_timeout=self._timeout, handle=handle, url=url, id=id, max_age=max_age)
+
+    def post(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemTwitchPost:
+        """One video or clip with its views and a link to play it.
+        
+        ``GET /v1/twitch/post``
+        
+        Args:
+            url: A video's link (`https://www.twitch.tv/videos/2914038727`) or a clip's (`https://www.twitch.tv/shroud/clip/…`, `https://clips.twitch.tv/…`).
+            id: A video's number, or a clip's name in its link, instead of `url`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_post, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
+
+    def post_comments(self, *, url: Optional[str] = None, id: Optional[str] = None, offset: Optional[int] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTwitchComment:
+        """A video's chat replay, about 60 messages a page.
+        
+        ``GET /v1/twitch/post/comments``
+        
+        Args:
+            url: The video's link.
+            id: The video's number, instead of `url`.
+            offset: Where in the video to start, in seconds (0, the default, is its beginning).
+            cursor: `nextCursor` of the previous page; `offset` is not read with it.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_post_comments, _request_timeout=self._timeout, url=url, id=id, offset=offset, cursor=cursor, max_age=max_age)
+
+    def profile(self, *, handle: Optional[str] = None, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemTwitchProfile:
+        """A channel with its follower count and links.
+        
+        ``GET /v1/twitch/profile``
+        
+        Args:
+            handle: The channel's login: the name in its link.
+            url: The channel's link (`https://www.twitch.tv/shroud`), instead of `handle`.
+            id: The channel's numeric id, instead of either.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_profile, _request_timeout=self._timeout, handle=handle, url=url, id=id, max_age=max_age)
+
+    def profile_clips(self, *, handle: Optional[str] = None, url: Optional[str] = None, id: Optional[str] = None, period: Optional[str] = None, featured: Optional[bool] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTwitchPost:
+        """A channel's clips, most viewed first, 30 a page.
+        
+        ``GET /v1/twitch/profile/clips``
+        
+        Args:
+            handle: The channel's login.
+            url: The channel's link, instead of `handle`.
+            id: The channel's numeric id, instead of either.
+            period: How far back: `day`, `week` (the default), `month` or `all`.
+            featured: Only the clips the channel features.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_profile_clips, _request_timeout=self._timeout, handle=handle, url=url, id=id, period=period, featured=featured, cursor=cursor, max_age=max_age)
+
+    def profile_posts(self, *, handle: Optional[str] = None, url: Optional[str] = None, id: Optional[str] = None, type: Optional[str] = None, sort: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTwitchPost:
+        """A channel's videos, 30 a page.
+        
+        ``GET /v1/twitch/profile/posts``
+        
+        Args:
+            handle: The channel's login.
+            url: The channel's link, instead of `handle`.
+            id: The channel's numeric id, instead of either.
+            type: `archive` (past broadcasts), `highlight` or `upload`; every kind when left out.
+            sort: `latest` (the default) or `views`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_profile_posts, _request_timeout=self._timeout, handle=handle, url=url, id=id, type=type, sort=sort, cursor=cursor, max_age=max_age)
+
+    def profile_schedule(self, *, handle: Optional[str] = None, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTwitchScheduleSegment:
+        """A channel's coming broadcasts, 30 a page.
+        
+        ``GET /v1/twitch/profile/schedule``
+        
+        Args:
+            handle: The channel's login.
+            url: The channel's link, instead of `handle`.
+            id: The channel's numeric id, instead of either.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_profile_schedule, _request_timeout=self._timeout, handle=handle, url=url, id=id, cursor=cursor, max_age=max_age)
+
+    def search(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTwitchPost:
+        """Videos matching a query, 20 a page.
+        
+        ``GET /v1/twitch/search``
+        
+        Args:
+            query: What to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_search, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def search_categories(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTwitchCategory:
+        """Categories matching a query, 30 a page.
+        
+        ``GET /v1/twitch/search/categories``
+        
+        Args:
+            query: What to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_search_categories, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def search_lives(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTwitchLive:
+        """Live channels matching a query, 30 a page.
+        
+        ``GET /v1/twitch/search/lives``
+        
+        Args:
+            query: What to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_search_lives, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def search_suggestions(self, *, query: str, max_age: Optional[int] = None) -> ListSuggestion:
+        """What the search box suggests for a few letters.
+        
+        ``GET /v1/twitch/search/suggestions``
+        
+        Args:
+            query: The first letters of a search.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_search_suggestions, _request_timeout=self._timeout, query=query, max_age=max_age)
+
+    def search_users(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTwitchProfile:
+        """Channels matching a query, 30 a page.
+        
+        ``GET /v1/twitch/search/users``
+        
+        Args:
+            query: What to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_search_users, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def trending(self, *, language: Optional[str] = None, tag: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTwitchLive:
+        """The live channels most watched now, 30 a page.
+        
+        ``GET /v1/twitch/trending``
+        
+        Args:
+            language: Only channels broadcasting in this language (`en`, `tr`).
+            tag: Only broadcasts with this tag (`DropsEnabled`).
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_trending, _request_timeout=self._timeout, language=language, tag=tag, cursor=cursor, max_age=max_age)
+
+    def trending_categories(self, *, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTwitchCategory:
+        """The categories most watched now, 30 a page.
+        
+        ``GET /v1/twitch/trending/categories``
+        
+        Args:
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.twitch_trending_categories, _request_timeout=self._timeout, cursor=cursor, max_age=max_age)
+
+
+class YouTubeEndpoints:
+    """YouTube's endpoints, as ``client.youtube``."""
+
+    def __init__(self, api: YouTubeApi, timeout: Optional[float]) -> None:
+        self._api = api
+        self._timeout = timeout
+
+    def batch_posts(self, *, ids: str) -> ListYouTubePost:
+        """Up to 50 videos at once, by their ids.
+        
+        ``GET /v1/youtube/batch/posts``
+        
+        Args:
+            ids: Up to 50 video ids, comma-separated.
+        """
+        return _call(self._api.youtube_batch_posts, _request_timeout=self._timeout, ids=ids)
+
+    def batch_profiles(self, *, ids: str) -> ListYouTubeProfile:
+        """Up to 20 channels at once, by their ids or handles.
+        
+        ``GET /v1/youtube/batch/profiles``
+        
+        Args:
+            ids: Up to 20 channel ids (`UC…`) or handles (`@…`), comma-separated.
+        """
+        return _call(self._api.youtube_batch_profiles, _request_timeout=self._timeout, ids=ids)
+
+    def batch_transcripts(self, *, ids: str, language: Optional[str] = None) -> ListYouTubeTranscript:
+        """Up to 20 videos' captions at once, by their ids.
+        
+        ``GET /v1/youtube/batch/transcripts``
+        
+        Args:
+            ids: Up to 20 video ids, comma-separated.
+            language: A language code (`en`, `de`): its captions when a video has them, else those in the language spoken.
+        """
+        return _call(self._api.youtube_batch_transcripts, _request_timeout=self._timeout, ids=ids, language=language)
+
+    def community(self, *, url: str, max_age: Optional[int] = None) -> ItemYouTubePost:
+        """One community post with its likes and images.
+        
+        ``GET /v1/youtube/community``
+        
+        Args:
+            url: The post's link (`https://www.youtube.com/post/Ugkx…`).
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_community, _request_timeout=self._timeout, url=url, max_age=max_age)
+
+    def hashtag(self, *, name: Optional[str] = None, url: Optional[str] = None, max_age: Optional[int] = None) -> ItemYouTubeHashtag:
+        """A hashtag with its video and channel counts.
+        
+        ``GET /v1/youtube/hashtag``
+        
+        Args:
+            name: The hashtag, with or without `#`.
+            url: Its page's link (`https://www.youtube.com/hashtag/cooking`), instead of `name`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_hashtag, _request_timeout=self._timeout, name=name, url=url, max_age=max_age)
+
+    def hashtag_posts(self, *, name: Optional[str] = None, url: Optional[str] = None, shorts: Optional[bool] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubePost:
+        """A hashtag's videos or Shorts, about 36 a page.
+        
+        ``GET /v1/youtube/hashtag/posts``
+        
+        Args:
+            name: The hashtag, with or without `#`.
+            url: Its page's link, instead of `name`.
+            shorts: Its Shorts alone.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_hashtag_posts, _request_timeout=self._timeout, name=name, url=url, shorts=shorts, cursor=cursor, max_age=max_age)
+
+    def playlist(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemYouTubePlaylist:
+        """A playlist with its owner and video count.
+        
+        ``GET /v1/youtube/playlist``
+        
+        Args:
+            url: The playlist's link (`https://www.youtube.com/playlist?list=PL…`).
+            id: The playlist's id, instead of `url`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_playlist, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
+
+    def playlist_posts(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubePost:
+        """A playlist's videos in order, 100 a page.
+        
+        ``GET /v1/youtube/playlist/posts``
+        
+        Args:
+            url: The playlist's link.
+            id: The playlist's id, instead of `url`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_playlist_posts, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
+
+    def post(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemYouTubePost:
+        """One video or Short with its views, likes and chapters.
+        
+        ``GET /v1/youtube/post``
+        
+        Args:
+            url: The video's link (`https://www.youtube.com/watch?v=dQw4w9WgXcQ`, a Short's or a `youtu.be` one).
+            id: The video's id, instead of `url`.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_post, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
+
+    def post_comment_replies(self, *, token: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubeComment:
+        """A comment's replies, 10 a page.
+        
+        ``GET /v1/youtube/post/comment/replies``
+        
+        Args:
+            token: The comment's `ext.repliesToken`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_post_comment_replies, _request_timeout=self._timeout, token=token, cursor=cursor, max_age=max_age)
+
+    def post_comments(self, *, url: Optional[str] = None, id: Optional[str] = None, sort: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubeComment:
+        """A video's comments, top or newest first, about 20 a page.
+        
+        ``GET /v1/youtube/post/comments``
+        
+        Args:
+            url: The video's link.
+            id: The video's id, instead of `url`.
+            sort: `top` (the default) or `newest`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_post_comments, _request_timeout=self._timeout, url=url, id=id, sort=sort, cursor=cursor, max_age=max_age)
+
+    def post_related(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubePost:
+        """The videos YouTube suggests beside one, about 20 a page.
+        
+        ``GET /v1/youtube/post/related``
+        
+        Args:
+            url: The video's link.
+            id: The video's id, instead of `url`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_post_related, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
+
+    def post_transcript(self, *, url: Optional[str] = None, id: Optional[str] = None, language: Optional[str] = None, max_age: Optional[int] = None) -> ItemYouTubeTranscript:
+        """A video's captions as text.
+        
+        ``GET /v1/youtube/post/transcript``
+        
+        Args:
+            url: The video's link.
+            id: The video's id, instead of `url`.
+            language: A language code (`en`, `de`, `pt-BR`): its captions when the video has them, else those in the language spoken.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_post_transcript, _request_timeout=self._timeout, url=url, id=id, language=language, max_age=max_age)
+
+    def profile(self, *, handle: Optional[str] = None, channel_id: Optional[str] = None, url: Optional[str] = None, max_age: Optional[int] = None) -> ItemYouTubeProfile:
+        """A channel with its subscribers, videos and views.
+        
+        ``GET /v1/youtube/profile``
+        
+        Args:
+            handle: The channel's handle, with or without `@`.
+            channel_id: The channel's id (`UCX6OQ3DkcsbYNE6H8uQQuVA`), instead of `handle`.
+            url: The channel's link, instead of either.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_profile, _request_timeout=self._timeout, handle=handle, channel_id=channel_id, url=url, max_age=max_age)
+
+    def profile_community(self, *, handle: Optional[str] = None, channel_id: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubePost:
+        """A channel's community posts, 10 a page.
+        
+        ``GET /v1/youtube/profile/community``
+        
+        Args:
+            handle: The channel's handle, with or without `@`.
+            channel_id: The channel's id, instead of `handle`.
+            url: The channel's link, instead of either.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_profile_community, _request_timeout=self._timeout, handle=handle, channel_id=channel_id, url=url, cursor=cursor, max_age=max_age)
+
+    def profile_lives(self, *, handle: Optional[str] = None, channel_id: Optional[str] = None, url: Optional[str] = None, sort: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubePost:
+        """A channel's live streams, on now and past, 30 a page.
+        
+        ``GET /v1/youtube/profile/lives``
+        
+        Args:
+            handle: The channel's handle, with or without `@`.
+            channel_id: The channel's id, instead of `handle`.
+            url: The channel's link, instead of either.
+            sort: `latest` (the default), `popular` or `oldest`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_profile_lives, _request_timeout=self._timeout, handle=handle, channel_id=channel_id, url=url, sort=sort, cursor=cursor, max_age=max_age)
+
+    def profile_playlists(self, *, handle: Optional[str] = None, channel_id: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubePlaylist:
+        """A channel's playlists, 30 a page.
+        
+        ``GET /v1/youtube/profile/playlists``
+        
+        Args:
+            handle: The channel's handle, with or without `@`.
+            channel_id: The channel's id, instead of `handle`.
+            url: The channel's link, instead of either.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_profile_playlists, _request_timeout=self._timeout, handle=handle, channel_id=channel_id, url=url, cursor=cursor, max_age=max_age)
+
+    def profile_podcasts(self, *, handle: Optional[str] = None, channel_id: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubePlaylist:
+        """A channel's podcasts.
+        
+        ``GET /v1/youtube/profile/podcasts``
+        
+        Args:
+            handle: The channel's handle, with or without `@`.
+            channel_id: The channel's id, instead of `handle`.
+            url: The channel's link, instead of either.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_profile_podcasts, _request_timeout=self._timeout, handle=handle, channel_id=channel_id, url=url, cursor=cursor, max_age=max_age)
+
+    def profile_posts(self, *, handle: Optional[str] = None, channel_id: Optional[str] = None, url: Optional[str] = None, sort: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubePost:
+        """A channel's videos, 30 a page.
+        
+        ``GET /v1/youtube/profile/posts``
+        
+        Args:
+            handle: The channel's handle, with or without `@`.
+            channel_id: The channel's id, instead of `handle`.
+            url: The channel's link, instead of either.
+            sort: `latest` (the default), `popular` or `oldest`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_profile_posts, _request_timeout=self._timeout, handle=handle, channel_id=channel_id, url=url, sort=sort, cursor=cursor, max_age=max_age)
+
+    def profile_search(self, *, query: str, handle: Optional[str] = None, channel_id: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubePost:
+        """A search within one channel's videos, about 30 a page.
+        
+        ``GET /v1/youtube/profile/search``
+        
+        Args:
+            handle: The channel's handle, with or without `@`.
+            channel_id: The channel's id, instead of `handle`.
+            url: The channel's link, instead of either.
+            query: What to search for in its videos.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_profile_search, _request_timeout=self._timeout, handle=handle, channel_id=channel_id, url=url, query=query, cursor=cursor, max_age=max_age)
+
+    def profile_shorts(self, *, handle: Optional[str] = None, channel_id: Optional[str] = None, url: Optional[str] = None, sort: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubePost:
+        """A channel's Shorts, about 48 a page.
+        
+        ``GET /v1/youtube/profile/shorts``
+        
+        Args:
+            handle: The channel's handle, with or without `@`.
+            channel_id: The channel's id, instead of `handle`.
+            url: The channel's link, instead of either.
+            sort: `latest` (the default), `popular` or `oldest`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_profile_shorts, _request_timeout=self._timeout, handle=handle, channel_id=channel_id, url=url, sort=sort, cursor=cursor, max_age=max_age)
+
+    def search(self, *, query: str, type: Optional[str] = None, sort: Optional[str] = None, uploaded: Optional[str] = None, duration: Optional[str] = None, features: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubePost:
+        """Videos matching a query, about 20 a page.
+        
+        ``GET /v1/youtube/search``
+        
+        Args:
+            query: What to search for.
+            type: `videos` (the default), `shorts` or `live`.
+            sort: `relevance` (the default) or `popular` (the most viewed first).
+            uploaded: `today`, `week`, `month` or `year`.
+            duration: `short` (under 3 minutes), `medium` (3 to 20) or `long` (over 20).
+            features: Features the videos must have, comma-separated: `hd`, `4k`, `hdr`, `subtitles`, `creative_commons`, `360`.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_search, _request_timeout=self._timeout, query=query, type=type, sort=sort, uploaded=uploaded, duration=duration, features=features, cursor=cursor, max_age=max_age)
+
+    def search_channels(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubeProfile:
+        """Channels matching a query, about 20 a page.
+        
+        ``GET /v1/youtube/search/channels``
+        
+        Args:
+            query: What to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_search_channels, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def search_playlists(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubePlaylist:
+        """Playlists matching a query, about 20 a page.
+        
+        ``GET /v1/youtube/search/playlists``
+        
+        Args:
+            query: What to search for.
+            cursor: `nextCursor` of the previous page.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_search_playlists, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
+
+    def search_suggestions(self, *, query: str, max_age: Optional[int] = None) -> ListSuggestion:
+        """What the search box suggests for a few letters.
+        
+        ``GET /v1/youtube/search/suggestions``
+        
+        Args:
+            query: The first letters of a search.
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_search_suggestions, _request_timeout=self._timeout, query=query, max_age=max_age)
+
+    def trending(self, *, country: Optional[str] = None, max_age: Optional[int] = None) -> ListYouTubePost:
+        """What is trending in a country, about 20 videos.
+        
+        ``GET /v1/youtube/trending``
+        
+        Args:
+            country: The country, as a two-letter code (`us`, the default).
+            max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
+        """
+        return _call(self._api.youtube_trending, _request_timeout=self._timeout, country=country, max_age=max_age)
+
+
 class AccountEndpoints:
     """Your workspace, as ``client.account``."""
 
@@ -959,10 +2488,15 @@ class SocialAPI:
         if not key:
             raise ValueError("Pass your API key as SocialAPI(api_key=...), or set SOCIALAPI_API_KEY.")
         self._client = ApiClient(Configuration(host=base_url.rstrip("/"), access_token=key))
+        self.bluesky = BlueskyEndpoints(BlueskyApi(self._client), timeout)
         self.facebook = FacebookEndpoints(FacebookApi(self._client), timeout)
         self.instagram = InstagramEndpoints(InstagramApi(self._client), timeout)
+        self.pinterest = PinterestEndpoints(PinterestApi(self._client), timeout)
+        self.reddit = RedditEndpoints(RedditApi(self._client), timeout)
         self.threads = ThreadsEndpoints(ThreadsApi(self._client), timeout)
         self.tiktok = TikTokEndpoints(TikTokApi(self._client), timeout)
+        self.twitch = TwitchEndpoints(TwitchApi(self._client), timeout)
+        self.youtube = YouTubeEndpoints(YouTubeApi(self._client), timeout)
         self.account = AccountEndpoints(AccountApi(self._client), timeout)
 
     def close(self) -> None:

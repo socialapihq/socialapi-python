@@ -112,6 +112,41 @@ The generated classes (`TikTokApi`, `InstagramApi`…) are exported too. Their `
 
 <!-- BEGIN GENERATED API REFERENCE -->
 
+### Bluesky
+
+| Method | Description |
+| --- | --- |
+| `bluesky.batch_posts()` | Up to 25 posts at once |
+| `bluesky.batch_profiles()` | Up to 25 accounts at once |
+| `bluesky.feed()` | A feed with its description and likes |
+| `bluesky.feed_posts()` | A feed's posts |
+| `bluesky.hashtag_posts()` | A hashtag's posts |
+| `bluesky.list()` | A list with its purpose and member count |
+| `bluesky.list_members()` | A list's accounts |
+| `bluesky.list_posts()` | The posts of a list's accounts |
+| `bluesky.post()` | One post with its likes |
+| `bluesky.post_comments()` | A post's replies |
+| `bluesky.post_likes()` | The accounts that liked a post |
+| `bluesky.post_quotes()` | The posts quoting a post |
+| `bluesky.post_reposts()` | The accounts that reposted a post |
+| `bluesky.profile()` | An account with its follower and post counts |
+| `bluesky.profile_feeds()` | The feeds an account made |
+| `bluesky.profile_followers()` | The accounts following an account |
+| `bluesky.profile_following()` | The accounts an account follows |
+| `bluesky.profile_lists()` | The lists an account made |
+| `bluesky.profile_media()` | An account's posts with images or video |
+| `bluesky.profile_posts()` | An account's posts and reposts |
+| `bluesky.profile_replies()` | An account's posts with its replies |
+| `bluesky.profile_starter_packs()` | The starter packs an account made |
+| `bluesky.profile_videos()` | An account's posts with video |
+| `bluesky.search()` | Posts matching a query |
+| `bluesky.search_feeds()` | Feeds matching a query |
+| `bluesky.search_starter_packs()` | Starter packs matching a query |
+| `bluesky.search_users()` | Accounts matching a query |
+| `bluesky.starter_pack()` | A starter pack with its accounts' list and feeds |
+| `bluesky.trending()` | The posts of Bluesky's Discover feed |
+| `bluesky.trending_topics()` | The topics trending now |
+
 ### Facebook
 
 | Method | Description |
@@ -149,6 +184,52 @@ The generated classes (`TikTokApi`, `InstagramApi`…) are exported too. Their `
 | `instagram.sound_posts()` | The reels that use a sound |
 | `instagram.trending()` | The reels feed Instagram gives a visitor |
 | `instagram.trending_topics()` | The explore page's trending keywords and accounts |
+
+### Pinterest
+
+| Method | Description |
+| --- | --- |
+| `pinterest.board()` | A board with its pin and follower counts |
+| `pinterest.board_posts()` | A board's pins |
+| `pinterest.board_section_posts()` | A board section's pins |
+| `pinterest.board_sections()` | A board's sections with their pin counts |
+| `pinterest.post()` | One pin with its saves |
+| `pinterest.post_comment_replies()` | A comment's replies |
+| `pinterest.post_comments()` | A pin's comments |
+| `pinterest.profile()` | A profile with its follower and pin counts |
+| `pinterest.profile_boards()` | An account's boards |
+| `pinterest.profile_posts()` | The pins an account created |
+| `pinterest.search()` | Pins matching a query |
+| `pinterest.search_boards()` | Boards matching a query |
+| `pinterest.search_suggestions()` | What the search box suggests for a few letters |
+| `pinterest.search_users()` | Accounts matching a query |
+| `pinterest.search_videos()` | Video pins matching a query |
+| `pinterest.topic()` | A topic's Ideas page with its followers and searches |
+| `pinterest.topic_posts()` | A topic's top pins |
+| `pinterest.trending()` | What a country searches for on Pinterest Trends |
+| `pinterest.url()` | How many times a web page was saved to Pinterest |
+
+### Reddit
+
+| Method | Description |
+| --- | --- |
+| `reddit.post()` | One post with its score |
+| `reddit.post_comment_replies()` | A comment's replies |
+| `reddit.post_comments()` | A post's comments with their replies |
+| `reddit.post_transcript()` | A video post's captions as text |
+| `reddit.profile()` | A profile with its karma and trophies |
+| `reddit.profile_comments()` | An account's comments |
+| `reddit.profile_posts()` | An account's posts |
+| `reddit.search()` | Posts matching a query across Reddit |
+| `reddit.search_comments()` | Comments matching a query across Reddit |
+| `reddit.search_media()` | Image and video posts matching a query |
+| `reddit.search_subreddits()` | Communities matching a query |
+| `reddit.search_users()` | Accounts matching a name |
+| `reddit.subreddit()` | A community with its members |
+| `reddit.subreddit_posts()` | A community's posts |
+| `reddit.subreddit_search()` | Posts in one community matching a query |
+| `reddit.trending()` | What is hot on Reddit now |
+| `reddit.trending_searches()` | The searches Reddit shows as trending now |
 
 ### Threads
 
@@ -191,6 +272,62 @@ The generated classes (`TikTokApi`, `InstagramApi`…) are exported too. Their `
 | `tiktok.sound()` | A sound |
 | `tiktok.sound_posts()` | Posts that use a sound |
 | `tiktok.trending()` | What the explore page shows now |
+
+### Twitch
+
+| Method | Description |
+| --- | --- |
+| `twitch.batch_live()` | Up to 100 channels' live status at once |
+| `twitch.batch_profiles()` | Up to 50 channels at once |
+| `twitch.category()` | A category with its viewers |
+| `twitch.category_clips()` | A category's clips |
+| `twitch.category_lives()` | A category's live channels |
+| `twitch.category_posts()` | A category's videos |
+| `twitch.live()` | Whether a channel is live |
+| `twitch.post()` | One video or clip with its views and a link to play it |
+| `twitch.post_comments()` | A video's chat replay |
+| `twitch.profile()` | A channel with its follower count and links |
+| `twitch.profile_clips()` | A channel's clips |
+| `twitch.profile_posts()` | A channel's videos |
+| `twitch.profile_schedule()` | A channel's coming broadcasts |
+| `twitch.search()` | Videos matching a query |
+| `twitch.search_categories()` | Categories matching a query |
+| `twitch.search_lives()` | Live channels matching a query |
+| `twitch.search_suggestions()` | What the search box suggests for a few letters |
+| `twitch.search_users()` | Channels matching a query |
+| `twitch.trending()` | The live channels most watched now |
+| `twitch.trending_categories()` | The categories most watched now |
+
+### YouTube
+
+| Method | Description |
+| --- | --- |
+| `youtube.batch_posts()` | Up to 50 videos at once |
+| `youtube.batch_profiles()` | Up to 20 channels at once |
+| `youtube.batch_transcripts()` | Up to 20 videos' captions at once |
+| `youtube.community()` | One community post with its likes and images |
+| `youtube.hashtag()` | A hashtag with its video and channel counts |
+| `youtube.hashtag_posts()` | A hashtag's videos or Shorts |
+| `youtube.playlist()` | A playlist with its owner and video count |
+| `youtube.playlist_posts()` | A playlist's videos in order |
+| `youtube.post()` | One video or Short with its views |
+| `youtube.post_comment_replies()` | A comment's replies |
+| `youtube.post_comments()` | A video's comments |
+| `youtube.post_related()` | The videos YouTube suggests beside one |
+| `youtube.post_transcript()` | A video's captions as text |
+| `youtube.profile()` | A channel with its subscribers |
+| `youtube.profile_community()` | A channel's community posts |
+| `youtube.profile_lives()` | A channel's live streams |
+| `youtube.profile_playlists()` | A channel's playlists |
+| `youtube.profile_podcasts()` | A channel's podcasts |
+| `youtube.profile_posts()` | A channel's videos |
+| `youtube.profile_search()` | A search within one channel's videos |
+| `youtube.profile_shorts()` | A channel's Shorts |
+| `youtube.search()` | Videos matching a query |
+| `youtube.search_channels()` | Channels matching a query |
+| `youtube.search_playlists()` | Playlists matching a query |
+| `youtube.search_suggestions()` | What the search box suggests for a few letters |
+| `youtube.trending()` | What is trending in a country |
 
 ### Account
 

@@ -2543,7 +2543,7 @@ class InstagramApi:
     ) -> ListInstagramPost:
         """An account's reels with their plays, 12 a page.
 
-        With their plays, likes and comments. Captions and times are not in this list; read a reel with `/v1/instagram/post`. 1 credit a page.
+        With their plays, likes, comments and cover. Captions, times and the video's link are not in this list; read a reel with `/v1/instagram/post`. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2624,7 +2624,7 @@ class InstagramApi:
     ) -> ApiResponse[ListInstagramPost]:
         """An account's reels with their plays, 12 a page.
 
-        With their plays, likes and comments. Captions and times are not in this list; read a reel with `/v1/instagram/post`. 1 credit a page.
+        With their plays, likes, comments and cover. Captions, times and the video's link are not in this list; read a reel with `/v1/instagram/post`. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2705,7 +2705,7 @@ class InstagramApi:
     ) -> RESTResponseType:
         """An account's reels with their plays, 12 a page.
 
-        With their plays, likes and comments. Captions and times are not in this list; read a reel with `/v1/instagram/post`. 1 credit a page.
+        With their plays, likes, comments and cover. Captions, times and the video's link are not in this list; read a reel with `/v1/instagram/post`. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
