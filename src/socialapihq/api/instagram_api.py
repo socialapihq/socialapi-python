@@ -65,8 +65,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListInstagramPost:
-        """A story highlight's stories, each with its media and time. 1 credit.
+        """A story highlight's stories, with their media.
 
+        Each with its media and time. 1 credit.
 
         :param url: The highlight's link (`https://www.instagram.com/stories/highlights/<id>/`, or the app's share link).
         :type url: str
@@ -141,8 +142,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListInstagramPost]:
-        """A story highlight's stories, each with its media and time. 1 credit.
+        """A story highlight's stories, with their media.
 
+        Each with its media and time. 1 credit.
 
         :param url: The highlight's link (`https://www.instagram.com/stories/highlights/<id>/`, or the app's share link).
         :type url: str
@@ -217,8 +219,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A story highlight's stories, each with its media and time. 1 credit.
+        """A story highlight's stories, with their media.
 
+        Each with its media and time. 1 credit.
 
         :param url: The highlight's link (`https://www.instagram.com/stories/highlights/<id>/`, or the app's share link).
         :type url: str
@@ -365,8 +368,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemInstagramPlace:
-        """A place: its name, category, address, phone, coordinates and how many posts are tagged at it. 1 credit.
+        """A place, with how many posts are tagged at it.
 
+        Name, category, address, phone and coordinates, and how many posts are tagged at it. 1 credit.
 
         :param url: The place's link (`https://www.instagram.com/explore/locations/<id>/<name>/`).
         :type url: str
@@ -441,8 +445,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemInstagramPlace]:
-        """A place: its name, category, address, phone, coordinates and how many posts are tagged at it. 1 credit.
+        """A place, with how many posts are tagged at it.
 
+        Name, category, address, phone and coordinates, and how many posts are tagged at it. 1 credit.
 
         :param url: The place's link (`https://www.instagram.com/explore/locations/<id>/<name>/`).
         :type url: str
@@ -517,8 +522,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A place: its name, category, address, phone, coordinates and how many posts are tagged at it. 1 credit.
+        """A place, with how many posts are tagged at it.
 
+        Name, category, address, phone and coordinates, and how many posts are tagged at it. 1 credit.
 
         :param url: The place's link (`https://www.instagram.com/explore/locations/<id>/<name>/`).
         :type url: str
@@ -665,8 +671,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListInstagramPost:
-        """A place's top posts with their likes, comments and times: the 18 Instagram shows a visitor, no more. 1 credit.
+        """A place's top posts with their likes and comments.
 
+        With their times. The 18 Instagram shows a visitor, no more. 1 credit.
 
         :param url: The place's link (`https://www.instagram.com/explore/locations/<id>/<name>/`).
         :type url: str
@@ -741,8 +748,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListInstagramPost]:
-        """A place's top posts with their likes, comments and times: the 18 Instagram shows a visitor, no more. 1 credit.
+        """A place's top posts with their likes and comments.
 
+        With their times. The 18 Instagram shows a visitor, no more. 1 credit.
 
         :param url: The place's link (`https://www.instagram.com/explore/locations/<id>/<name>/`).
         :type url: str
@@ -817,8 +825,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A place's top posts with their likes, comments and times: the 18 Instagram shows a visitor, no more. 1 credit.
+        """A place's top posts with their likes and comments.
 
+        With their times. The 18 Instagram shows a visitor, no more. 1 credit.
 
         :param url: The place's link (`https://www.instagram.com/explore/locations/<id>/<name>/`).
         :type url: str
@@ -965,8 +974,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemInstagramPost:
-        """One post or reel: caption, time, author, like and comment counts, its media, the place it was tagged at, the accounts tagged in it and the sound a reel uses. 1 credit.
+        """One post or reel with its counts, media and tags.
 
+        Caption, time, author, like and comment counts, its media, the place it was tagged at, the accounts tagged in it and the sound a reel uses. 1 credit.
 
         :param url: The post's link (`https://www.instagram.com/p/DgCpvD5A-3U/`, or a reel's).
         :type url: str
@@ -1041,8 +1051,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemInstagramPost]:
-        """One post or reel: caption, time, author, like and comment counts, its media, the place it was tagged at, the accounts tagged in it and the sound a reel uses. 1 credit.
+        """One post or reel with its counts, media and tags.
 
+        Caption, time, author, like and comment counts, its media, the place it was tagged at, the accounts tagged in it and the sound a reel uses. 1 credit.
 
         :param url: The post's link (`https://www.instagram.com/p/DgCpvD5A-3U/`, or a reel's).
         :type url: str
@@ -1117,8 +1128,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """One post or reel: caption, time, author, like and comment counts, its media, the place it was tagged at, the accounts tagged in it and the sound a reel uses. 1 credit.
+        """One post or reel with its counts, media and tags.
 
+        Caption, time, author, like and comment counts, its media, the place it was tagged at, the accounts tagged in it and the sound a reel uses. 1 credit.
 
         :param url: The post's link (`https://www.instagram.com/p/DgCpvD5A-3U/`, or a reel's).
         :type url: str
@@ -1266,8 +1278,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListInstagramComment:
-        """A post's comments with their likes, about 22 a page. Replies, and how many a comment has, are not shown to a visitor. 1 credit a page.
+        """A post's comments with their likes, about 22 a page.
 
+        Replies, and how many a comment has, are not shown to a visitor. 1 credit a page.
 
         :param url: The post's link.
         :type url: str
@@ -1346,8 +1359,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListInstagramComment]:
-        """A post's comments with their likes, about 22 a page. Replies, and how many a comment has, are not shown to a visitor. 1 credit a page.
+        """A post's comments with their likes, about 22 a page.
 
+        Replies, and how many a comment has, are not shown to a visitor. 1 credit a page.
 
         :param url: The post's link.
         :type url: str
@@ -1426,8 +1440,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A post's comments with their likes, about 22 a page. Replies, and how many a comment has, are not shown to a visitor. 1 credit a page.
+        """A post's comments with their likes, about 22 a page.
 
+        Replies, and how many a comment has, are not shown to a visitor. 1 credit a page.
 
         :param url: The post's link.
         :type url: str
@@ -1582,8 +1597,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemInstagramProfile:
-        """A profile: name, bio and its links, verified, private, follower and following counts. Instagram does not show a visitor the post count, so `posts` is absent. 1 credit.
+        """A profile with its follower and following counts.
 
+        Name, bio and its links, verified, private, follower and following counts. Instagram does not show a visitor the post count, so `posts` is absent. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -1658,8 +1674,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemInstagramProfile]:
-        """A profile: name, bio and its links, verified, private, follower and following counts. Instagram does not show a visitor the post count, so `posts` is absent. 1 credit.
+        """A profile with its follower and following counts.
 
+        Name, bio and its links, verified, private, follower and following counts. Instagram does not show a visitor the post count, so `posts` is absent. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -1734,8 +1751,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A profile: name, bio and its links, verified, private, follower and following counts. Instagram does not show a visitor the post count, so `posts` is absent. 1 credit.
+        """A profile with its follower and following counts.
 
+        Name, bio and its links, verified, private, follower and following counts. Instagram does not show a visitor the post count, so `posts` is absent. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -1883,8 +1901,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListInstagramHighlight:
-        """An account's story highlights: their titles and covers, the first 10 (all Instagram shows a visitor; the profile's `ext.moreHighlights` says when there are more). 1 credit.
+        """An account's story highlights, with their covers.
 
+        Their titles and covers. The first 10, all Instagram shows a visitor; the profile's `ext.moreHighlights` says when there are more. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -1963,8 +1982,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListInstagramHighlight]:
-        """An account's story highlights: their titles and covers, the first 10 (all Instagram shows a visitor; the profile's `ext.moreHighlights` says when there are more). 1 credit.
+        """An account's story highlights, with their covers.
 
+        Their titles and covers. The first 10, all Instagram shows a visitor; the profile's `ext.moreHighlights` says when there are more. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2043,8 +2063,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """An account's story highlights: their titles and covers, the first 10 (all Instagram shows a visitor; the profile's `ext.moreHighlights` says when there are more). 1 credit.
+        """An account's story highlights, with their covers.
 
+        Their titles and covers. The first 10, all Instagram shows a visitor; the profile's `ext.moreHighlights` says when there are more. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2200,8 +2221,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListInstagramPost:
-        """An account's posts with their likes, comments, captions and times, newest first, 12 a page. 1 credit a page.
+        """An account's posts, newest first, 12 a page.
 
+        With their likes, comments, captions and times. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2280,8 +2302,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListInstagramPost]:
-        """An account's posts with their likes, comments, captions and times, newest first, 12 a page. 1 credit a page.
+        """An account's posts, newest first, 12 a page.
 
+        With their likes, comments, captions and times. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2360,8 +2383,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """An account's posts with their likes, comments, captions and times, newest first, 12 a page. 1 credit a page.
+        """An account's posts, newest first, 12 a page.
 
+        With their likes, comments, captions and times. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2517,8 +2541,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListInstagramPost:
-        """An account's reels with their plays, likes and comments, 12 a page. Captions and times are not in this list; read a reel with `/v1/instagram/post`. 1 credit a page.
+        """An account's reels with their plays, 12 a page.
 
+        With their plays, likes and comments. Captions and times are not in this list; read a reel with `/v1/instagram/post`. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2597,8 +2622,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListInstagramPost]:
-        """An account's reels with their plays, likes and comments, 12 a page. Captions and times are not in this list; read a reel with `/v1/instagram/post`. 1 credit a page.
+        """An account's reels with their plays, 12 a page.
 
+        With their plays, likes and comments. Captions and times are not in this list; read a reel with `/v1/instagram/post`. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2677,8 +2703,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """An account's reels with their plays, likes and comments, 12 a page. Captions and times are not in this list; read a reel with `/v1/instagram/post`. 1 credit a page.
+        """An account's reels with their plays, 12 a page.
 
+        With their plays, likes and comments. Captions and times are not in this list; read a reel with `/v1/instagram/post`. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2834,8 +2861,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListInstagramProfile:
-        """Accounts like this one, as Instagram suggests them: up to 50, without their counts. Some accounts have none. 1 credit.
+        """Accounts like this one, as Instagram suggests them.
 
+        Up to 50, without their counts. Some accounts have none. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2914,8 +2942,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListInstagramProfile]:
-        """Accounts like this one, as Instagram suggests them: up to 50, without their counts. Some accounts have none. 1 credit.
+        """Accounts like this one, as Instagram suggests them.
 
+        Up to 50, without their counts. Some accounts have none. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2994,8 +3023,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Accounts like this one, as Instagram suggests them: up to 50, without their counts. Some accounts have none. 1 credit.
+        """Accounts like this one, as Instagram suggests them.
 
+        Up to 50, without their counts. Some accounts have none. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -3150,8 +3180,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListInstagramPost:
-        """Posts for a word or hashtag, as Instagram shows a visitor (its popular page): mostly reels with their plays, 12 a page, about 100 in all. Some words have no such page and answer an empty list. 1 credit a page.
+        """Popular posts for a word or hashtag, 12 a page.
 
+        Mostly reels with their plays, from its popular page, about 100 in all, as Instagram shows a visitor. Some words have no such page and answer an empty list. 1 credit a page.
 
         :param query: A word or a hashtag (`nike`, `#summer outfits`). (required)
         :type query: str
@@ -3226,8 +3257,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListInstagramPost]:
-        """Posts for a word or hashtag, as Instagram shows a visitor (its popular page): mostly reels with their plays, 12 a page, about 100 in all. Some words have no such page and answer an empty list. 1 credit a page.
+        """Popular posts for a word or hashtag, 12 a page.
 
+        Mostly reels with their plays, from its popular page, about 100 in all, as Instagram shows a visitor. Some words have no such page and answer an empty list. 1 credit a page.
 
         :param query: A word or a hashtag (`nike`, `#summer outfits`). (required)
         :type query: str
@@ -3302,8 +3334,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Posts for a word or hashtag, as Instagram shows a visitor (its popular page): mostly reels with their plays, 12 a page, about 100 in all. Some words have no such page and answer an empty list. 1 credit a page.
+        """Popular posts for a word or hashtag, 12 a page.
 
+        Mostly reels with their plays, from its popular page, about 100 in all, as Instagram shows a visitor. Some words have no such page and answer an empty list. 1 credit a page.
 
         :param query: A word or a hashtag (`nike`, `#summer outfits`). (required)
         :type query: str
@@ -3450,8 +3483,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemInstagramSound:
-        """A sound: a song (title, artist, cover, length) or an account's original audio, and how many reels use it. 1 credit.
+        """A sound, and how many reels use it.
 
+        A song (title, artist, cover, length) or an account's original audio. 1 credit.
 
         :param url: The sound's link (`https://www.instagram.com/reels/audio/<id>/`).
         :type url: str
@@ -3526,8 +3560,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemInstagramSound]:
-        """A sound: a song (title, artist, cover, length) or an account's original audio, and how many reels use it. 1 credit.
+        """A sound, and how many reels use it.
 
+        A song (title, artist, cover, length) or an account's original audio. 1 credit.
 
         :param url: The sound's link (`https://www.instagram.com/reels/audio/<id>/`).
         :type url: str
@@ -3602,8 +3637,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A sound: a song (title, artist, cover, length) or an account's original audio, and how many reels use it. 1 credit.
+        """A sound, and how many reels use it.
 
+        A song (title, artist, cover, length) or an account's original audio. 1 credit.
 
         :param url: The sound's link (`https://www.instagram.com/reels/audio/<id>/`).
         :type url: str
@@ -3751,8 +3787,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListInstagramPost:
-        """The reels that use a sound, with their plays, likes, comments and times, 12 a page. 1 credit a page.
+        """The reels that use a sound, 12 a page.
 
+        With their plays, likes, comments and times. 1 credit a page.
 
         :param url: The sound's link.
         :type url: str
@@ -3831,8 +3868,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListInstagramPost]:
-        """The reels that use a sound, with their plays, likes, comments and times, 12 a page. 1 credit a page.
+        """The reels that use a sound, 12 a page.
 
+        With their plays, likes, comments and times. 1 credit a page.
 
         :param url: The sound's link.
         :type url: str
@@ -3911,8 +3949,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """The reels that use a sound, with their plays, likes, comments and times, 12 a page. 1 credit a page.
+        """The reels that use a sound, 12 a page.
 
+        With their plays, likes, comments and times. 1 credit a page.
 
         :param url: The sound's link.
         :type url: str
@@ -4066,8 +4105,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListInstagramPost:
-        """The reels feed Instagram gives a visitor now, with likes, comments and times, 8 a page. 1 credit a page.
+        """The reels feed Instagram gives a visitor, 8 a page.
 
+        With likes, comments and times. 1 credit a page.
 
         :param cursor: `nextCursor` of the previous page.
         :type cursor: str
@@ -4138,8 +4178,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListInstagramPost]:
-        """The reels feed Instagram gives a visitor now, with likes, comments and times, 8 a page. 1 credit a page.
+        """The reels feed Instagram gives a visitor, 8 a page.
 
+        With likes, comments and times. 1 credit a page.
 
         :param cursor: `nextCursor` of the previous page.
         :type cursor: str
@@ -4210,8 +4251,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """The reels feed Instagram gives a visitor now, with likes, comments and times, 8 a page. 1 credit a page.
+        """The reels feed Instagram gives a visitor, 8 a page.
 
+        With likes, comments and times. 1 credit a page.
 
         :param cursor: `nextCursor` of the previous page.
         :type cursor: str
@@ -4348,8 +4390,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListInstagramTrend:
-        """The explore page: trending keywords with their post counts, categories, and accounts to look out for, by section. 1 credit.
+        """The explore page's trending keywords and accounts.
 
+        Keywords with their post counts and categories, and accounts to watch, by section. 1 credit.
 
         :param max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
         :type max_age: int
@@ -4416,8 +4459,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListInstagramTrend]:
-        """The explore page: trending keywords with their post counts, categories, and accounts to look out for, by section. 1 credit.
+        """The explore page's trending keywords and accounts.
 
+        Keywords with their post counts and categories, and accounts to watch, by section. 1 credit.
 
         :param max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
         :type max_age: int
@@ -4484,8 +4528,9 @@ class InstagramApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """The explore page: trending keywords with their post counts, categories, and accounts to look out for, by section. 1 credit.
+        """The explore page's trending keywords and accounts.
 
+        Keywords with their post counts and categories, and accounts to watch, by section. 1 credit.
 
         :param max_age: How old a cached answer may be, in seconds; 0 always fetches. Default and most: the endpoint's cache lifetime.
         :type max_age: int

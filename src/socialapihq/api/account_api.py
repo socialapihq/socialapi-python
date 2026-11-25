@@ -51,8 +51,9 @@ class AccountApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> CreditsBody:
-        """The credits left. Free, and not counted against the rate limit.
+        """The credits left in your workspace.
 
+        Free, and not counted against the rate limit.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -114,8 +115,9 @@ class AccountApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[CreditsBody]:
-        """The credits left. Free, and not counted against the rate limit.
+        """The credits left in your workspace.
 
+        Free, and not counted against the rate limit.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -177,8 +179,9 @@ class AccountApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """The credits left. Free, and not counted against the rate limit.
+        """The credits left in your workspace.
 
+        Free, and not counted against the rate limit.
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

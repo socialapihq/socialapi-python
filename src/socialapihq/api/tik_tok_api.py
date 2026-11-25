@@ -67,8 +67,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokPost:
-        """The posts of a public saved collection, 30 a page. 1 credit a page.
+        """The posts of a public saved collection, 30 a page.
 
+        1 credit a page.
 
         :param url: The public saved collection's link (`https://www.tiktok.com/@user/collection/<name>-7311…`).
         :type url: str
@@ -147,8 +148,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokPost]:
-        """The posts of a public saved collection, 30 a page. 1 credit a page.
+        """The posts of a public saved collection, 30 a page.
 
+        1 credit a page.
 
         :param url: The public saved collection's link (`https://www.tiktok.com/@user/collection/<name>-7311…`).
         :type url: str
@@ -227,8 +229,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """The posts of a public saved collection, 30 a page. 1 credit a page.
+        """The posts of a public saved collection, 30 a page.
 
+        1 credit a page.
 
         :param url: The public saved collection's link (`https://www.tiktok.com/@user/collection/<name>-7311…`).
         :type url: str
@@ -384,8 +387,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemTikTokHashtag:
-        """A hashtag: its id, description, and post and view counts. 1 credit.
+        """A hashtag with its post and view counts.
 
+        Its id, description, and post and view counts. 1 credit.
 
         :param name: The hashtag, with or without `#`.
         :type name: str
@@ -464,8 +468,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemTikTokHashtag]:
-        """A hashtag: its id, description, and post and view counts. 1 credit.
+        """A hashtag with its post and view counts.
 
+        Its id, description, and post and view counts. 1 credit.
 
         :param name: The hashtag, with or without `#`.
         :type name: str
@@ -544,8 +549,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A hashtag: its id, description, and post and view counts. 1 credit.
+        """A hashtag with its post and view counts.
 
+        Its id, description, and post and view counts. 1 credit.
 
         :param name: The hashtag, with or without `#`.
         :type name: str
@@ -702,8 +708,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokPost:
-        """Posts under a hashtag, 30 a page. 1 credit a page.
+        """Posts under a hashtag, 30 a page.
 
+        1 credit a page.
 
         :param name: The hashtag, with or without `#`.
         :type name: str
@@ -786,8 +793,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokPost]:
-        """Posts under a hashtag, 30 a page. 1 credit a page.
+        """Posts under a hashtag, 30 a page.
 
+        1 credit a page.
 
         :param name: The hashtag, with or without `#`.
         :type name: str
@@ -870,8 +878,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Posts under a hashtag, 30 a page. 1 credit a page.
+        """Posts under a hashtag, 30 a page.
 
+        1 credit a page.
 
         :param name: The hashtag, with or without `#`.
         :type name: str
@@ -1036,8 +1045,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemTikTokLive:
-        """A live room: whether the account is live, and the room's title, viewers and start (by its id, also how many entered and when it ended). Name the account, or the room with `roomId`. 1 credit.
+        """Whether an account is live, and its room.
 
+        The room's title, viewers and start. Name the account, or the room with `roomId`; read by its id, the room also says how many entered and when it ended. 1 credit.
 
         :param handle: The account's username, with or without `@`.
         :type handle: str
@@ -1120,8 +1130,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemTikTokLive]:
-        """A live room: whether the account is live, and the room's title, viewers and start (by its id, also how many entered and when it ended). Name the account, or the room with `roomId`. 1 credit.
+        """Whether an account is live, and its room.
 
+        The room's title, viewers and start. Name the account, or the room with `roomId`; read by its id, the room also says how many entered and when it ended. 1 credit.
 
         :param handle: The account's username, with or without `@`.
         :type handle: str
@@ -1204,8 +1215,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A live room: whether the account is live, and the room's title, viewers and start (by its id, also how many entered and when it ended). Name the account, or the room with `roomId`. 1 credit.
+        """Whether an account is live, and its room.
 
+        The room's title, viewers and start. Name the account, or the room with `roomId`; read by its id, the room also says how many entered and when it ended. 1 credit.
 
         :param handle: The account's username, with or without `@`.
         :type handle: str
@@ -1369,8 +1381,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokPost:
-        """The posts of a playlist, 30 a page. 1 credit a page.
+        """The posts of a playlist, 30 a page.
 
+        1 credit a page.
 
         :param url: The playlist's link (`https://www.tiktok.com/@user/playlist/<name>-7311…`).
         :type url: str
@@ -1449,8 +1462,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokPost]:
-        """The posts of a playlist, 30 a page. 1 credit a page.
+        """The posts of a playlist, 30 a page.
 
+        1 credit a page.
 
         :param url: The playlist's link (`https://www.tiktok.com/@user/playlist/<name>-7311…`).
         :type url: str
@@ -1529,8 +1543,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """The posts of a playlist, 30 a page. 1 credit a page.
+        """The posts of a playlist, 30 a page.
 
+        1 credit a page.
 
         :param url: The playlist's link (`https://www.tiktok.com/@user/playlist/<name>-7311…`).
         :type url: str
@@ -1685,8 +1700,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemTikTokPost:
-        """One post: caption, author, view, like, comment, share and save counts and the engagement rate, media, sound, hashtags, the text on it, and the captions it has. 1 credit.
+        """One post with its counts, media and sound.
 
+        Caption, author, view, like, comment, share and save counts and the engagement rate, media, sound, hashtags, the text on it and the captions it has. 1 credit.
 
         :param url: The post's link (`https://www.tiktok.com/@user/video/7311…`, or a share link).
         :type url: str
@@ -1761,8 +1777,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemTikTokPost]:
-        """One post: caption, author, view, like, comment, share and save counts and the engagement rate, media, sound, hashtags, the text on it, and the captions it has. 1 credit.
+        """One post with its counts, media and sound.
 
+        Caption, author, view, like, comment, share and save counts and the engagement rate, media, sound, hashtags, the text on it and the captions it has. 1 credit.
 
         :param url: The post's link (`https://www.tiktok.com/@user/video/7311…`, or a share link).
         :type url: str
@@ -1837,8 +1854,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """One post: caption, author, view, like, comment, share and save counts and the engagement rate, media, sound, hashtags, the text on it, and the captions it has. 1 credit.
+        """One post with its counts, media and sound.
 
+        Caption, author, view, like, comment, share and save counts and the engagement rate, media, sound, hashtags, the text on it and the captions it has. 1 credit.
 
         :param url: The post's link (`https://www.tiktok.com/@user/video/7311…`, or a share link).
         :type url: str
@@ -1987,8 +2005,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokComment:
-        """The replies to one comment, 50 a page. 1 credit a page.
+        """The replies to one comment, 50 a page.
 
+        1 credit a page.
 
         :param comment_id: The comment whose replies to list (a comment's `id`). (required)
         :type comment_id: str
@@ -2071,8 +2090,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokComment]:
-        """The replies to one comment, 50 a page. 1 credit a page.
+        """The replies to one comment, 50 a page.
 
+        1 credit a page.
 
         :param comment_id: The comment whose replies to list (a comment's `id`). (required)
         :type comment_id: str
@@ -2155,8 +2175,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """The replies to one comment, 50 a page. 1 credit a page.
+        """The replies to one comment, 50 a page.
 
+        1 credit a page.
 
         :param comment_id: The comment whose replies to list (a comment's `id`). (required)
         :type comment_id: str
@@ -2320,8 +2341,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokComment:
-        """A post's top-level comments, 50 a page. 1 credit a page.
+        """A post's top-level comments, 50 a page.
 
+        1 credit a page.
 
         :param url: The post's link.
         :type url: str
@@ -2400,8 +2422,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokComment]:
-        """A post's top-level comments, 50 a page. 1 credit a page.
+        """A post's top-level comments, 50 a page.
 
+        1 credit a page.
 
         :param url: The post's link.
         :type url: str
@@ -2480,8 +2503,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A post's top-level comments, 50 a page. 1 credit a page.
+        """A post's top-level comments, 50 a page.
 
+        1 credit a page.
 
         :param url: The post's link.
         :type url: str
@@ -2636,8 +2660,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokPost:
-        """Posts TikTok recommends beside one post. 1 credit.
+        """Posts TikTok recommends beside one post.
 
+        1 credit.
 
         :param url: The post's link (`https://www.tiktok.com/@user/video/7311…`, or a share link).
         :type url: str
@@ -2712,8 +2737,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokPost]:
-        """Posts TikTok recommends beside one post. 1 credit.
+        """Posts TikTok recommends beside one post.
 
+        1 credit.
 
         :param url: The post's link (`https://www.tiktok.com/@user/video/7311…`, or a share link).
         :type url: str
@@ -2788,8 +2814,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Posts TikTok recommends beside one post. 1 credit.
+        """Posts TikTok recommends beside one post.
 
+        1 credit.
 
         :param url: The post's link (`https://www.tiktok.com/@user/video/7311…`, or a share link).
         :type url: str
@@ -2937,8 +2964,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemTikTokTranscript:
-        """A post's captions as text with their times: TikTok's own (generated or the author's), in the language asked for when it has it. `404` when the post has none. 5 credits.
+        """A post's captions as text with their times.
 
+        TikTok's own, generated or the author's, in the language asked for when it has it. `404` when the post has none. 5 credits.
 
         :param url: The post's link.
         :type url: str
@@ -3017,8 +3045,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemTikTokTranscript]:
-        """A post's captions as text with their times: TikTok's own (generated or the author's), in the language asked for when it has it. `404` when the post has none. 5 credits.
+        """A post's captions as text with their times.
 
+        TikTok's own, generated or the author's, in the language asked for when it has it. `404` when the post has none. 5 credits.
 
         :param url: The post's link.
         :type url: str
@@ -3097,8 +3126,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A post's captions as text with their times: TikTok's own (generated or the author's), in the language asked for when it has it. `404` when the post has none. 5 credits.
+        """A post's captions as text with their times.
 
+        TikTok's own, generated or the author's, in the language asked for when it has it. `404` when the post has none. 5 credits.
 
         :param url: The post's link.
         :type url: str
@@ -3254,8 +3284,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemTikTokProfile:
-        """A profile: name, bio, link, verified, private, and exact follower, following, like and post counts. 1 credit.
+        """A profile with its exact follower and like counts.
 
+        Name, bio, link, verified, private, and exact follower, following, like and post counts. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -3334,8 +3365,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemTikTokProfile]:
-        """A profile: name, bio, link, verified, private, and exact follower, following, like and post counts. 1 credit.
+        """A profile with its exact follower and like counts.
 
+        Name, bio, link, verified, private, and exact follower, following, like and post counts. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -3414,8 +3446,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A profile: name, bio, link, verified, private, and exact follower, following, like and post counts. 1 credit.
+        """A profile with its exact follower and like counts.
 
+        Name, bio, link, verified, private, and exact follower, following, like and post counts. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -3572,8 +3605,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokProfile:
-        """An account's followers, newest first, 30 a page. 1 credit a page.
+        """An account's followers, newest first, 30 a page.
 
+        1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -3656,8 +3690,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokProfile]:
-        """An account's followers, newest first, 30 a page. 1 credit a page.
+        """An account's followers, newest first, 30 a page.
 
+        1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -3740,8 +3775,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """An account's followers, newest first, 30 a page. 1 credit a page.
+        """An account's followers, newest first, 30 a page.
 
+        1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -3906,8 +3942,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokProfile:
-        """The accounts an account follows, when it shows them (`403 PRIVATE` when it hides them). 1 credit a page.
+        """The accounts an account follows, when it shows them.
 
+        `403 PRIVATE` when it hides them. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -3990,8 +4027,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokProfile]:
-        """The accounts an account follows, when it shows them (`403 PRIVATE` when it hides them). 1 credit a page.
+        """The accounts an account follows, when it shows them.
 
+        `403 PRIVATE` when it hides them. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -4074,8 +4112,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """The accounts an account follows, when it shows them (`403 PRIVATE` when it hides them). 1 credit a page.
+        """The accounts an account follows, when it shows them.
 
+        `403 PRIVATE` when it hides them. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -4240,8 +4279,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokPost:
-        """Posts an account liked, when its likes are public (an empty list when they are not). 1 credit a page.
+        """Posts an account liked, when its likes are public.
 
+        An empty list when they are not. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -4324,8 +4364,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokPost]:
-        """Posts an account liked, when its likes are public (an empty list when they are not). 1 credit a page.
+        """Posts an account liked, when its likes are public.
 
+        An empty list when they are not. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -4408,8 +4449,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Posts an account liked, when its likes are public (an empty list when they are not). 1 credit a page.
+        """Posts an account liked, when its likes are public.
 
+        An empty list when they are not. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -4574,8 +4616,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokPlaylist:
-        """The playlists an account made. 1 credit a page.
+        """The playlists an account made.
 
+        1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -4658,8 +4701,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokPlaylist]:
-        """The playlists an account made. 1 credit a page.
+        """The playlists an account made.
 
+        1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -4742,8 +4786,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """The playlists an account made. 1 credit a page.
+        """The playlists an account made.
 
+        1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -4908,8 +4953,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokPost:
-        """An account's posts, newest first (pinned ones first of all), 30 a page. 1 credit a page.
+        """An account's posts, newest first, 30 a page.
 
+        Pinned ones come first of all. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -4992,8 +5038,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokPost]:
-        """An account's posts, newest first (pinned ones first of all), 30 a page. 1 credit a page.
+        """An account's posts, newest first, 30 a page.
 
+        Pinned ones come first of all. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -5076,8 +5123,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """An account's posts, newest first (pinned ones first of all), 30 a page. 1 credit a page.
+        """An account's posts, newest first, 30 a page.
 
+        Pinned ones come first of all. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -5242,8 +5290,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokPost:
-        """Other people's posts an account reposted. 1 credit a page.
+        """Other people's posts an account reposted.
 
+        1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -5326,8 +5375,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokPost]:
-        """Other people's posts an account reposted. 1 credit a page.
+        """Other people's posts an account reposted.
 
+        1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -5410,8 +5460,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Other people's posts an account reposted. 1 credit a page.
+        """Other people's posts an account reposted.
 
+        1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -5574,8 +5625,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokPost:
-        """Posts matching a query, 30 a page. 1 credit a page.
+        """Posts matching a query, 30 a page.
 
+        1 credit a page.
 
         :param query: What to search for. (required)
         :type query: str
@@ -5650,8 +5702,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokPost]:
-        """Posts matching a query, 30 a page. 1 credit a page.
+        """Posts matching a query, 30 a page.
 
+        1 credit a page.
 
         :param query: What to search for. (required)
         :type query: str
@@ -5726,8 +5779,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Posts matching a query, 30 a page. 1 credit a page.
+        """Posts matching a query, 30 a page.
 
+        1 credit a page.
 
         :param query: What to search for. (required)
         :type query: str
@@ -5874,8 +5928,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokProfile:
-        """Accounts matching a query. 1 credit a page.
+        """Accounts matching a query.
 
+        1 credit a page.
 
         :param query: What to search for. (required)
         :type query: str
@@ -5950,8 +6005,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokProfile]:
-        """Accounts matching a query. 1 credit a page.
+        """Accounts matching a query.
 
+        1 credit a page.
 
         :param query: What to search for. (required)
         :type query: str
@@ -6026,8 +6082,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Accounts matching a query. 1 credit a page.
+        """Accounts matching a query.
 
+        1 credit a page.
 
         :param query: What to search for. (required)
         :type query: str
@@ -6174,8 +6231,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemTikTokSound:
-        """A sound: title, artist, duration, how many posts use it. 1 credit.
+        """A sound, and how many posts use it.
 
+        Its title, artist and duration, and how many posts use it. 1 credit.
 
         :param url: The sound's link (`https://www.tiktok.com/music/<title>-7311…`, or a share link).
         :type url: str
@@ -6250,8 +6308,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemTikTokSound]:
-        """A sound: title, artist, duration, how many posts use it. 1 credit.
+        """A sound, and how many posts use it.
 
+        Its title, artist and duration, and how many posts use it. 1 credit.
 
         :param url: The sound's link (`https://www.tiktok.com/music/<title>-7311…`, or a share link).
         :type url: str
@@ -6326,8 +6385,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A sound: title, artist, duration, how many posts use it. 1 credit.
+        """A sound, and how many posts use it.
 
+        Its title, artist and duration, and how many posts use it. 1 credit.
 
         :param url: The sound's link (`https://www.tiktok.com/music/<title>-7311…`, or a share link).
         :type url: str
@@ -6475,8 +6535,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokPost:
-        """Posts that use a sound, 30 a page. 1 credit a page.
+        """Posts that use a sound, 30 a page.
 
+        1 credit a page.
 
         :param url: The sound's link.
         :type url: str
@@ -6555,8 +6616,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokPost]:
-        """Posts that use a sound, 30 a page. 1 credit a page.
+        """Posts that use a sound, 30 a page.
 
+        1 credit a page.
 
         :param url: The sound's link.
         :type url: str
@@ -6635,8 +6697,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Posts that use a sound, 30 a page. 1 credit a page.
+        """Posts that use a sound, 30 a page.
 
+        1 credit a page.
 
         :param url: The sound's link.
         :type url: str
@@ -6790,8 +6853,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListTikTokPost:
-        """What the explore page shows a guest now, for one of its categories (`all` by default): a fresh set of about 30 posts each time. 1 credit.
+        """What the explore page shows now, by category.
 
+        For one of its categories, `all` by default. A fresh set of about 30 posts each time. 1 credit.
 
         :param category: The explore page's category. Default `all`.
         :type category: str
@@ -6862,8 +6926,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListTikTokPost]:
-        """What the explore page shows a guest now, for one of its categories (`all` by default): a fresh set of about 30 posts each time. 1 credit.
+        """What the explore page shows now, by category.
 
+        For one of its categories, `all` by default. A fresh set of about 30 posts each time. 1 credit.
 
         :param category: The explore page's category. Default `all`.
         :type category: str
@@ -6934,8 +6999,9 @@ class TikTokApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """What the explore page shows a guest now, for one of its categories (`all` by default): a fresh set of about 30 posts each time. 1 credit.
+        """What the explore page shows now, by category.
 
+        For one of its categories, `all` by default. A fresh set of about 30 posts each time. 1 credit.
 
         :param category: The explore page's category. Default `all`.
         :type category: str

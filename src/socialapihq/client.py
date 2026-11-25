@@ -135,7 +135,7 @@ class FacebookEndpoints:
         self._timeout = timeout
 
     def event(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemFacebookEvent:
-        """An event: name, description, when, where, its host, how many are going, its tickets' link. 1 credit.
+        """One event, with its time, place and host.
         
         ``GET /v1/facebook/event``
         
@@ -147,7 +147,7 @@ class FacebookEndpoints:
         return _call(self._api.facebook_event, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
 
     def events(self, *, url: Optional[str] = None, city_id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListFacebookEvent:
-        """A city's upcoming events, 12 a page. 1 credit a page.
+        """A city's upcoming events, 12 a page.
         
         ``GET /v1/facebook/events``
         
@@ -160,7 +160,7 @@ class FacebookEndpoints:
         return _call(self._api.facebook_events, _request_timeout=self._timeout, url=url, city_id=city_id, cursor=cursor, max_age=max_age)
 
     def events_search(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListFacebookEvent:
-        """Events matching a query: two short pages, all Facebook shows a visitor. 1 credit a page.
+        """Events matching a query.
         
         ``GET /v1/facebook/events/search``
         
@@ -172,7 +172,7 @@ class FacebookEndpoints:
         return _call(self._api.facebook_events_search, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
 
     def marketplace_item(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemFacebookListing:
-        """One Marketplace listing: title, description, price, condition, place, seller. 1 credit.
+        """One Marketplace listing.
         
         ``GET /v1/facebook/marketplace/item``
         
@@ -184,7 +184,7 @@ class FacebookEndpoints:
         return _call(self._api.facebook_marketplace_item, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
 
     def marketplace_search(self, *, query: str, latitude: float, longitude: float, radius_km: Optional[int] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListFacebookListing:
-        """Marketplace listings for a query around a point: title, price, place, seller, about 14, the first page Facebook shows a visitor. 1 credit.
+        """Marketplace listings for a query near a point.
         
         ``GET /v1/facebook/marketplace/search``
         
@@ -199,7 +199,7 @@ class FacebookEndpoints:
         return _call(self._api.facebook_marketplace_search, _request_timeout=self._timeout, query=query, latitude=latitude, longitude=longitude, radius_km=radius_km, cursor=cursor, max_age=max_age)
 
     def post(self, *, url: Optional[str] = None, max_age: Optional[int] = None) -> ItemFacebookPost:
-        """One post, reel or video: text, author, time, reactions by kind, comment and share counts, its media and the caption tracks it has. 1 credit.
+        """One post, reel or video with its counts and media.
         
         ``GET /v1/facebook/post``
         
@@ -210,7 +210,7 @@ class FacebookEndpoints:
         return _call(self._api.facebook_post, _request_timeout=self._timeout, url=url, max_age=max_age)
 
     def post_comment_replies(self, *, token: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListFacebookComment:
-        """The replies to one comment, about 10 a page, named by its `ext.repliesToken`. 1 credit a page.
+        """The replies to one comment, about 10 a page.
         
         ``GET /v1/facebook/post/comment/replies``
         
@@ -222,7 +222,7 @@ class FacebookEndpoints:
         return _call(self._api.facebook_post_comment_replies, _request_timeout=self._timeout, token=token, cursor=cursor, max_age=max_age)
 
     def post_comments(self, *, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListFacebookComment:
-        """A post's comments, most relevant first, with their reactions and how many replies, 10 a page. A comment with replies carries `ext.repliesToken` for `/v1/facebook/post/comment/replies`. 1 credit a page.
+        """A post's comments, most relevant first, 10 a page.
         
         ``GET /v1/facebook/post/comments``
         
@@ -234,7 +234,7 @@ class FacebookEndpoints:
         return _call(self._api.facebook_post_comments, _request_timeout=self._timeout, url=url, cursor=cursor, max_age=max_age)
 
     def post_transcript(self, *, url: Optional[str] = None, language: Optional[str] = None, max_age: Optional[int] = None) -> ItemFacebookTranscript:
-        """A video's captions as text with their times: Facebook's own track, in the video's language where it lists one, else a translation (`translated` says so). `404` when the video has none. 5 credits.
+        """A video's captions as text with their times.
         
         ``GET /v1/facebook/post/transcript``
         
@@ -246,7 +246,7 @@ class FacebookEndpoints:
         return _call(self._api.facebook_post_transcript, _request_timeout=self._timeout, url=url, language=language, max_age=max_age)
 
     def profile(self, *, handle: Optional[str] = None, url: Optional[str] = None, max_age: Optional[int] = None) -> ItemFacebookProfile:
-        """A page or a public person: name, category, bio, verified, follower count (as Facebook rounds it, "39M"), cover and the intro's lines (address, phone, links). 1 credit.
+        """A Page or a public person, with its follower count.
         
         ``GET /v1/facebook/profile``
         
@@ -258,7 +258,7 @@ class FacebookEndpoints:
         return _call(self._api.facebook_profile, _request_timeout=self._timeout, handle=handle, url=url, max_age=max_age)
 
     def profile_photos(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListFacebookPost:
-        """A page's or person's photos, 8 a page. 1 credit a page.
+        """A Page's or person's photos, 8 a page.
         
         ``GET /v1/facebook/profile/photos``
         
@@ -271,7 +271,7 @@ class FacebookEndpoints:
         return _call(self._api.facebook_profile_photos, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
 
     def profile_posts(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListFacebookPost:
-        """A page's or person's posts, newest first, with their reactions by kind, comments, shares and video views: 3 a page, as Facebook pages them. 1 credit a page.
+        """A Page's or person's posts, newest first, 3 a page.
         
         ``GET /v1/facebook/profile/posts``
         
@@ -284,7 +284,7 @@ class FacebookEndpoints:
         return _call(self._api.facebook_profile_posts, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
 
     def profile_videos(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListFacebookPost:
-        """A page's videos with their plays and reactions, about 6 a page. Only a Page has one. 1 credit a page.
+        """A Page's videos with their plays, about 6 a page.
         
         ``GET /v1/facebook/profile/videos``
         
@@ -305,7 +305,7 @@ class InstagramEndpoints:
         self._timeout = timeout
 
     def highlight(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ListInstagramPost:
-        """A story highlight's stories, each with its media and time. 1 credit.
+        """A story highlight's stories, with their media.
         
         ``GET /v1/instagram/highlight``
         
@@ -317,7 +317,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_highlight, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
 
     def location(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemInstagramPlace:
-        """A place: its name, category, address, phone, coordinates and how many posts are tagged at it. 1 credit.
+        """A place, with how many posts are tagged at it.
         
         ``GET /v1/instagram/location``
         
@@ -329,7 +329,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_location, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
 
     def location_posts(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ListInstagramPost:
-        """A place's top posts with their likes, comments and times: the 18 Instagram shows a visitor, no more. 1 credit.
+        """A place's top posts with their likes and comments.
         
         ``GET /v1/instagram/location/posts``
         
@@ -341,7 +341,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_location_posts, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
 
     def post(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemInstagramPost:
-        """One post or reel: caption, time, author, like and comment counts, its media, the place it was tagged at, the accounts tagged in it and the sound a reel uses. 1 credit.
+        """One post or reel with its counts, media and tags.
         
         ``GET /v1/instagram/post``
         
@@ -353,7 +353,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_post, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
 
     def post_comments(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListInstagramComment:
-        """A post's comments with their likes, about 22 a page. Replies, and how many a comment has, are not shown to a visitor. 1 credit a page.
+        """A post's comments with their likes, about 22 a page.
         
         ``GET /v1/instagram/post/comments``
         
@@ -366,7 +366,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_post_comments, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
 
     def profile(self, *, handle: Optional[str] = None, url: Optional[str] = None, max_age: Optional[int] = None) -> ItemInstagramProfile:
-        """A profile: name, bio and its links, verified, private, follower and following counts. Instagram does not show a visitor the post count, so `posts` is absent. 1 credit.
+        """A profile with its follower and following counts.
         
         ``GET /v1/instagram/profile``
         
@@ -378,7 +378,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_profile, _request_timeout=self._timeout, handle=handle, url=url, max_age=max_age)
 
     def profile_highlights(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListInstagramHighlight:
-        """An account's story highlights: their titles and covers, the first 10 (all Instagram shows a visitor; the profile's `ext.moreHighlights` says when there are more). 1 credit.
+        """An account's story highlights, with their covers.
         
         ``GET /v1/instagram/profile/highlights``
         
@@ -391,7 +391,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_profile_highlights, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
 
     def profile_posts(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListInstagramPost:
-        """An account's posts with their likes, comments, captions and times, newest first, 12 a page. 1 credit a page.
+        """An account's posts, newest first, 12 a page.
         
         ``GET /v1/instagram/profile/posts``
         
@@ -404,7 +404,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_profile_posts, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
 
     def profile_reels(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListInstagramPost:
-        """An account's reels with their plays, likes and comments, 12 a page. Captions and times are not in this list; read a reel with `/v1/instagram/post`. 1 credit a page.
+        """An account's reels with their plays, 12 a page.
         
         ``GET /v1/instagram/profile/reels``
         
@@ -417,7 +417,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_profile_reels, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
 
     def profile_similar(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListInstagramProfile:
-        """Accounts like this one, as Instagram suggests them: up to 50, without their counts. Some accounts have none. 1 credit.
+        """Accounts like this one, as Instagram suggests them.
         
         ``GET /v1/instagram/profile/similar``
         
@@ -430,7 +430,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_profile_similar, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
 
     def search(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListInstagramPost:
-        """Posts for a word or hashtag, as Instagram shows a visitor (its popular page): mostly reels with their plays, 12 a page, about 100 in all. Some words have no such page and answer an empty list. 1 credit a page.
+        """Popular posts for a word or hashtag, 12 a page.
         
         ``GET /v1/instagram/search``
         
@@ -442,7 +442,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_search, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
 
     def sound(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemInstagramSound:
-        """A sound: a song (title, artist, cover, length) or an account's original audio, and how many reels use it. 1 credit.
+        """A sound, and how many reels use it.
         
         ``GET /v1/instagram/sound``
         
@@ -454,7 +454,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_sound, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
 
     def sound_posts(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListInstagramPost:
-        """The reels that use a sound, with their plays, likes, comments and times, 12 a page. 1 credit a page.
+        """The reels that use a sound, 12 a page.
         
         ``GET /v1/instagram/sound/posts``
         
@@ -467,7 +467,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_sound_posts, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
 
     def trending(self, *, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListInstagramPost:
-        """The reels feed Instagram gives a visitor now, with likes, comments and times, 8 a page. 1 credit a page.
+        """The reels feed Instagram gives a visitor, 8 a page.
         
         ``GET /v1/instagram/trending``
         
@@ -478,7 +478,7 @@ class InstagramEndpoints:
         return _call(self._api.instagram_trending, _request_timeout=self._timeout, cursor=cursor, max_age=max_age)
 
     def trending_topics(self, *, max_age: Optional[int] = None) -> ListInstagramTrend:
-        """The explore page: trending keywords with their post counts, categories, and accounts to look out for, by section. 1 credit.
+        """The explore page's trending keywords and accounts.
         
         ``GET /v1/instagram/trending/topics``
         
@@ -496,7 +496,7 @@ class ThreadsEndpoints:
         self._timeout = timeout
 
     def post(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemThreadsPost:
-        """One thread: text, author, time, like, reply, repost, quote and share counts, media, the post it quotes or answers, a link's preview. Views are not shown to a visitor. 1 credit.
+        """One thread with its counts, media and links.
         
         ``GET /v1/threads/post``
         
@@ -508,7 +508,7 @@ class ThreadsEndpoints:
         return _call(self._api.threads_post, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
 
     def post_comments(self, *, url: Optional[str] = None, id: Optional[str] = None, sort: Optional[str] = None, max_age: Optional[int] = None) -> ListThreadsComment:
-        """A thread's replies, top or latest first: the first 15 or so, all Threads shows a visitor (no next page). 1 credit.
+        """A thread's replies, top or latest first.
         
         ``GET /v1/threads/post/comments``
         
@@ -521,7 +521,7 @@ class ThreadsEndpoints:
         return _call(self._api.threads_post_comments, _request_timeout=self._timeout, url=url, id=id, sort=sort, max_age=max_age)
 
     def profile(self, *, handle: Optional[str] = None, url: Optional[str] = None, max_age: Optional[int] = None) -> ItemThreadsProfile:
-        """A profile: name, bio and its links, its interests, verified, private and the follower count. 1 credit.
+        """A profile with its follower count.
         
         ``GET /v1/threads/profile``
         
@@ -533,7 +533,7 @@ class ThreadsEndpoints:
         return _call(self._api.threads_profile, _request_timeout=self._timeout, handle=handle, url=url, max_age=max_age)
 
     def profile_media(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListThreadsPost:
-        """An account's threads with photos or videos, 25 a page. 1 credit a page.
+        """An account's threads with photos or videos, 25 a page.
         
         ``GET /v1/threads/profile/media``
         
@@ -546,7 +546,7 @@ class ThreadsEndpoints:
         return _call(self._api.threads_profile_media, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
 
     def profile_posts(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListThreadsPost:
-        """An account's threads with their likes, replies, reposts, quotes and shares, newest first (pinned ones first of all), 25 a page. 1 credit a page.
+        """An account's threads, newest first, 25 a page.
         
         ``GET /v1/threads/profile/posts``
         
@@ -559,7 +559,7 @@ class ThreadsEndpoints:
         return _call(self._api.threads_profile_posts, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
 
     def profile_replies(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListThreadsPost:
-        """An account's replies to other threads, each with the post it answers (`ext.replyTo`), 25 a page. 1 credit a page.
+        """An account's replies to other threads, 25 a page.
         
         ``GET /v1/threads/profile/replies``
         
@@ -572,7 +572,7 @@ class ThreadsEndpoints:
         return _call(self._api.threads_profile_replies, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
 
     def profile_reposts(self, *, handle: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListThreadsPost:
-        """Other people's threads an account reposted, with when (`ext.repostedAt`). 1 credit a page.
+        """Other people's threads an account reposted.
         
         ``GET /v1/threads/profile/reposts``
         
@@ -585,7 +585,7 @@ class ThreadsEndpoints:
         return _call(self._api.threads_profile_reposts, _request_timeout=self._timeout, handle=handle, url=url, cursor=cursor, max_age=max_age)
 
     def search(self, *, query: str, sort: Optional[str] = None, max_age: Optional[int] = None) -> ListThreadsPost:
-        """Threads matching a query, top or latest first: about 30 top or 20 latest, all Threads shows a visitor (no next page). 1 credit.
+        """Threads matching a query, top or latest first.
         
         ``GET /v1/threads/search``
         
@@ -597,7 +597,7 @@ class ThreadsEndpoints:
         return _call(self._api.threads_search, _request_timeout=self._timeout, query=query, sort=sort, max_age=max_age)
 
     def search_users(self, *, query: str, max_age: Optional[int] = None) -> ListThreadsProfile:
-        """Accounts matching a name: the first 10, without their counts. 1 credit.
+        """Accounts matching a name, the first 10.
         
         ``GET /v1/threads/search/users``
         
@@ -608,7 +608,7 @@ class ThreadsEndpoints:
         return _call(self._api.threads_search_users, _request_timeout=self._timeout, query=query, max_age=max_age)
 
     def trending(self, *, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListThreadsPost:
-        """The feed Threads gives a visitor now: about 20 threads in all. 1 credit a page.
+        """The feed Threads gives a visitor now.
         
         ``GET /v1/threads/trending``
         
@@ -627,7 +627,7 @@ class TikTokEndpoints:
         self._timeout = timeout
 
     def collection_posts(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokPost:
-        """The posts of a public saved collection, 30 a page. 1 credit a page.
+        """The posts of a public saved collection, 30 a page.
         
         ``GET /v1/tiktok/collection/posts``
         
@@ -640,7 +640,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_collection_posts, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
 
     def hashtag(self, *, name: Optional[str] = None, id: Optional[str] = None, url: Optional[str] = None, max_age: Optional[int] = None) -> ItemTikTokHashtag:
-        """A hashtag: its id, description, and post and view counts. 1 credit.
+        """A hashtag with its post and view counts.
         
         ``GET /v1/tiktok/hashtag``
         
@@ -653,7 +653,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_hashtag, _request_timeout=self._timeout, name=name, id=id, url=url, max_age=max_age)
 
     def hashtag_posts(self, *, name: Optional[str] = None, id: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokPost:
-        """Posts under a hashtag, 30 a page. 1 credit a page.
+        """Posts under a hashtag, 30 a page.
         
         ``GET /v1/tiktok/hashtag/posts``
         
@@ -667,7 +667,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_hashtag_posts, _request_timeout=self._timeout, name=name, id=id, url=url, cursor=cursor, max_age=max_age)
 
     def live(self, *, handle: Optional[str] = None, sec_uid: Optional[str] = None, url: Optional[str] = None, room_id: Optional[str] = None, max_age: Optional[int] = None) -> ItemTikTokLive:
-        """A live room: whether the account is live, and the room's title, viewers and start (by its id, also how many entered and when it ended). Name the account, or the room with `roomId`. 1 credit.
+        """Whether an account is live, and its room.
         
         ``GET /v1/tiktok/live``
         
@@ -681,7 +681,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_live, _request_timeout=self._timeout, handle=handle, sec_uid=sec_uid, url=url, room_id=room_id, max_age=max_age)
 
     def playlist_posts(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokPost:
-        """The posts of a playlist, 30 a page. 1 credit a page.
+        """The posts of a playlist, 30 a page.
         
         ``GET /v1/tiktok/playlist/posts``
         
@@ -694,7 +694,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_playlist_posts, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
 
     def post(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemTikTokPost:
-        """One post: caption, author, view, like, comment, share and save counts and the engagement rate, media, sound, hashtags, the text on it, and the captions it has. 1 credit.
+        """One post with its counts, media and sound.
         
         ``GET /v1/tiktok/post``
         
@@ -706,7 +706,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_post, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
 
     def post_comment_replies(self, *, comment_id: str, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokComment:
-        """The replies to one comment, 50 a page. 1 credit a page.
+        """The replies to one comment, 50 a page.
         
         ``GET /v1/tiktok/post/comment/replies``
         
@@ -720,7 +720,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_post_comment_replies, _request_timeout=self._timeout, url=url, id=id, comment_id=comment_id, cursor=cursor, max_age=max_age)
 
     def post_comments(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokComment:
-        """A post's top-level comments, 50 a page. 1 credit a page.
+        """A post's top-level comments, 50 a page.
         
         ``GET /v1/tiktok/post/comments``
         
@@ -733,7 +733,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_post_comments, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
 
     def post_related(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokPost:
-        """Posts TikTok recommends beside one post. 1 credit.
+        """Posts TikTok recommends beside one post.
         
         ``GET /v1/tiktok/post/related``
         
@@ -745,7 +745,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_post_related, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
 
     def post_transcript(self, *, url: Optional[str] = None, id: Optional[str] = None, language: Optional[str] = None, max_age: Optional[int] = None) -> ItemTikTokTranscript:
-        """A post's captions as text with their times: TikTok's own (generated or the author's), in the language asked for when it has it. `404` when the post has none. 5 credits.
+        """A post's captions as text with their times.
         
         ``GET /v1/tiktok/post/transcript``
         
@@ -758,7 +758,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_post_transcript, _request_timeout=self._timeout, url=url, id=id, language=language, max_age=max_age)
 
     def profile(self, *, handle: Optional[str] = None, sec_uid: Optional[str] = None, url: Optional[str] = None, max_age: Optional[int] = None) -> ItemTikTokProfile:
-        """A profile: name, bio, link, verified, private, and exact follower, following, like and post counts. 1 credit.
+        """A profile with its exact follower and like counts.
         
         ``GET /v1/tiktok/profile``
         
@@ -771,7 +771,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_profile, _request_timeout=self._timeout, handle=handle, sec_uid=sec_uid, url=url, max_age=max_age)
 
     def profile_followers(self, *, handle: Optional[str] = None, sec_uid: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokProfile:
-        """An account's followers, newest first, 30 a page. 1 credit a page.
+        """An account's followers, newest first, 30 a page.
         
         ``GET /v1/tiktok/profile/followers``
         
@@ -785,7 +785,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_profile_followers, _request_timeout=self._timeout, handle=handle, sec_uid=sec_uid, url=url, cursor=cursor, max_age=max_age)
 
     def profile_following(self, *, handle: Optional[str] = None, sec_uid: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokProfile:
-        """The accounts an account follows, when it shows them (`403 PRIVATE` when it hides them). 1 credit a page.
+        """The accounts an account follows, when it shows them.
         
         ``GET /v1/tiktok/profile/following``
         
@@ -799,7 +799,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_profile_following, _request_timeout=self._timeout, handle=handle, sec_uid=sec_uid, url=url, cursor=cursor, max_age=max_age)
 
     def profile_liked(self, *, handle: Optional[str] = None, sec_uid: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokPost:
-        """Posts an account liked, when its likes are public (an empty list when they are not). 1 credit a page.
+        """Posts an account liked, when its likes are public.
         
         ``GET /v1/tiktok/profile/liked``
         
@@ -813,7 +813,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_profile_liked, _request_timeout=self._timeout, handle=handle, sec_uid=sec_uid, url=url, cursor=cursor, max_age=max_age)
 
     def profile_playlists(self, *, handle: Optional[str] = None, sec_uid: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokPlaylist:
-        """The playlists an account made. 1 credit a page.
+        """The playlists an account made.
         
         ``GET /v1/tiktok/profile/playlists``
         
@@ -827,7 +827,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_profile_playlists, _request_timeout=self._timeout, handle=handle, sec_uid=sec_uid, url=url, cursor=cursor, max_age=max_age)
 
     def profile_posts(self, *, handle: Optional[str] = None, sec_uid: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokPost:
-        """An account's posts, newest first (pinned ones first of all), 30 a page. 1 credit a page.
+        """An account's posts, newest first, 30 a page.
         
         ``GET /v1/tiktok/profile/posts``
         
@@ -841,7 +841,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_profile_posts, _request_timeout=self._timeout, handle=handle, sec_uid=sec_uid, url=url, cursor=cursor, max_age=max_age)
 
     def profile_reposts(self, *, handle: Optional[str] = None, sec_uid: Optional[str] = None, url: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokPost:
-        """Other people's posts an account reposted. 1 credit a page.
+        """Other people's posts an account reposted.
         
         ``GET /v1/tiktok/profile/reposts``
         
@@ -855,7 +855,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_profile_reposts, _request_timeout=self._timeout, handle=handle, sec_uid=sec_uid, url=url, cursor=cursor, max_age=max_age)
 
     def search(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokPost:
-        """Posts matching a query, 30 a page. 1 credit a page.
+        """Posts matching a query, 30 a page.
         
         ``GET /v1/tiktok/search``
         
@@ -867,7 +867,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_search, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
 
     def search_users(self, *, query: str, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokProfile:
-        """Accounts matching a query. 1 credit a page.
+        """Accounts matching a query.
         
         ``GET /v1/tiktok/search/users``
         
@@ -879,7 +879,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_search_users, _request_timeout=self._timeout, query=query, cursor=cursor, max_age=max_age)
 
     def sound(self, *, url: Optional[str] = None, id: Optional[str] = None, max_age: Optional[int] = None) -> ItemTikTokSound:
-        """A sound: title, artist, duration, how many posts use it. 1 credit.
+        """A sound, and how many posts use it.
         
         ``GET /v1/tiktok/sound``
         
@@ -891,7 +891,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_sound, _request_timeout=self._timeout, url=url, id=id, max_age=max_age)
 
     def sound_posts(self, *, url: Optional[str] = None, id: Optional[str] = None, cursor: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokPost:
-        """Posts that use a sound, 30 a page. 1 credit a page.
+        """Posts that use a sound, 30 a page.
         
         ``GET /v1/tiktok/sound/posts``
         
@@ -904,7 +904,7 @@ class TikTokEndpoints:
         return _call(self._api.tiktok_sound_posts, _request_timeout=self._timeout, url=url, id=id, cursor=cursor, max_age=max_age)
 
     def trending(self, *, category: Optional[str] = None, max_age: Optional[int] = None) -> ListTikTokPost:
-        """What the explore page shows a guest now, for one of its categories (`all` by default): a fresh set of about 30 posts each time. 1 credit.
+        """What the explore page shows now, by category.
         
         ``GET /v1/tiktok/trending``
         
@@ -923,7 +923,7 @@ class AccountEndpoints:
         self._timeout = timeout
 
     def get_credits(self) -> CreditsBody:
-        """The credits left. Free, and not counted against the rate limit.
+        """The credits left in your workspace.
         
         ``GET /v1/credits``
         """

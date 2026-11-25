@@ -61,8 +61,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemThreadsPost:
-        """One thread: text, author, time, like, reply, repost, quote and share counts, media, the post it quotes or answers, a link's preview. Views are not shown to a visitor. 1 credit.
+        """One thread with its counts, media and links.
 
+        Text, author, time, like, reply, repost, quote and share counts, media, the post it quotes or answers and a link's preview. Views are not shown to a visitor. 1 credit.
 
         :param url: The post's link (`https://www.threads.com/@zuck/post/DgHQuRJm8lC`).
         :type url: str
@@ -137,8 +138,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemThreadsPost]:
-        """One thread: text, author, time, like, reply, repost, quote and share counts, media, the post it quotes or answers, a link's preview. Views are not shown to a visitor. 1 credit.
+        """One thread with its counts, media and links.
 
+        Text, author, time, like, reply, repost, quote and share counts, media, the post it quotes or answers and a link's preview. Views are not shown to a visitor. 1 credit.
 
         :param url: The post's link (`https://www.threads.com/@zuck/post/DgHQuRJm8lC`).
         :type url: str
@@ -213,8 +215,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """One thread: text, author, time, like, reply, repost, quote and share counts, media, the post it quotes or answers, a link's preview. Views are not shown to a visitor. 1 credit.
+        """One thread with its counts, media and links.
 
+        Text, author, time, like, reply, repost, quote and share counts, media, the post it quotes or answers and a link's preview. Views are not shown to a visitor. 1 credit.
 
         :param url: The post's link (`https://www.threads.com/@zuck/post/DgHQuRJm8lC`).
         :type url: str
@@ -362,8 +365,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListThreadsComment:
-        """A thread's replies, top or latest first: the first 15 or so, all Threads shows a visitor (no next page). 1 credit.
+        """A thread's replies, top or latest first.
 
+        The first 15 or so, all Threads shows a visitor (no next page). 1 credit.
 
         :param url: The post's link.
         :type url: str
@@ -442,8 +446,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListThreadsComment]:
-        """A thread's replies, top or latest first: the first 15 or so, all Threads shows a visitor (no next page). 1 credit.
+        """A thread's replies, top or latest first.
 
+        The first 15 or so, all Threads shows a visitor (no next page). 1 credit.
 
         :param url: The post's link.
         :type url: str
@@ -522,8 +527,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A thread's replies, top or latest first: the first 15 or so, all Threads shows a visitor (no next page). 1 credit.
+        """A thread's replies, top or latest first.
 
+        The first 15 or so, all Threads shows a visitor (no next page). 1 credit.
 
         :param url: The post's link.
         :type url: str
@@ -678,8 +684,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemThreadsProfile:
-        """A profile: name, bio and its links, its interests, verified, private and the follower count. 1 credit.
+        """A profile with its follower count.
 
+        Name, bio and its links, interests, verified, private and the follower count. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -754,8 +761,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemThreadsProfile]:
-        """A profile: name, bio and its links, its interests, verified, private and the follower count. 1 credit.
+        """A profile with its follower count.
 
+        Name, bio and its links, interests, verified, private and the follower count. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -830,8 +838,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A profile: name, bio and its links, its interests, verified, private and the follower count. 1 credit.
+        """A profile with its follower count.
 
+        Name, bio and its links, interests, verified, private and the follower count. 1 credit.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -979,8 +988,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListThreadsPost:
-        """An account's threads with photos or videos, 25 a page. 1 credit a page.
+        """An account's threads with photos or videos, 25 a page.
 
+        1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -1059,8 +1069,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListThreadsPost]:
-        """An account's threads with photos or videos, 25 a page. 1 credit a page.
+        """An account's threads with photos or videos, 25 a page.
 
+        1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -1139,8 +1150,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """An account's threads with photos or videos, 25 a page. 1 credit a page.
+        """An account's threads with photos or videos, 25 a page.
 
+        1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -1296,8 +1308,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListThreadsPost:
-        """An account's threads with their likes, replies, reposts, quotes and shares, newest first (pinned ones first of all), 25 a page. 1 credit a page.
+        """An account's threads, newest first, 25 a page.
 
+        With their likes, replies, reposts, quotes and shares. Pinned ones come first of all. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -1376,8 +1389,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListThreadsPost]:
-        """An account's threads with their likes, replies, reposts, quotes and shares, newest first (pinned ones first of all), 25 a page. 1 credit a page.
+        """An account's threads, newest first, 25 a page.
 
+        With their likes, replies, reposts, quotes and shares. Pinned ones come first of all. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -1456,8 +1470,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """An account's threads with their likes, replies, reposts, quotes and shares, newest first (pinned ones first of all), 25 a page. 1 credit a page.
+        """An account's threads, newest first, 25 a page.
 
+        With their likes, replies, reposts, quotes and shares. Pinned ones come first of all. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -1613,8 +1628,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListThreadsPost:
-        """An account's replies to other threads, each with the post it answers (`ext.replyTo`), 25 a page. 1 credit a page.
+        """An account's replies to other threads, 25 a page.
 
+        Each with the post it answers, in `ext.replyTo`. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -1693,8 +1709,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListThreadsPost]:
-        """An account's replies to other threads, each with the post it answers (`ext.replyTo`), 25 a page. 1 credit a page.
+        """An account's replies to other threads, 25 a page.
 
+        Each with the post it answers, in `ext.replyTo`. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -1773,8 +1790,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """An account's replies to other threads, each with the post it answers (`ext.replyTo`), 25 a page. 1 credit a page.
+        """An account's replies to other threads, 25 a page.
 
+        Each with the post it answers, in `ext.replyTo`. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -1930,8 +1948,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListThreadsPost:
-        """Other people's threads an account reposted, with when (`ext.repostedAt`). 1 credit a page.
+        """Other people's threads an account reposted.
 
+        With when, in `ext.repostedAt`. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2010,8 +2029,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListThreadsPost]:
-        """Other people's threads an account reposted, with when (`ext.repostedAt`). 1 credit a page.
+        """Other people's threads an account reposted.
 
+        With when, in `ext.repostedAt`. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2090,8 +2110,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Other people's threads an account reposted, with when (`ext.repostedAt`). 1 credit a page.
+        """Other people's threads an account reposted.
 
+        With when, in `ext.repostedAt`. 1 credit a page.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2246,8 +2267,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListThreadsPost:
-        """Threads matching a query, top or latest first: about 30 top or 20 latest, all Threads shows a visitor (no next page). 1 credit.
+        """Threads matching a query, top or latest first.
 
+        About 30 top or 20 latest, all Threads shows a visitor (no next page). 1 credit.
 
         :param query: What to search for. (required)
         :type query: str
@@ -2322,8 +2344,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListThreadsPost]:
-        """Threads matching a query, top or latest first: about 30 top or 20 latest, all Threads shows a visitor (no next page). 1 credit.
+        """Threads matching a query, top or latest first.
 
+        About 30 top or 20 latest, all Threads shows a visitor (no next page). 1 credit.
 
         :param query: What to search for. (required)
         :type query: str
@@ -2398,8 +2421,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Threads matching a query, top or latest first: about 30 top or 20 latest, all Threads shows a visitor (no next page). 1 credit.
+        """Threads matching a query, top or latest first.
 
+        About 30 top or 20 latest, all Threads shows a visitor (no next page). 1 credit.
 
         :param query: What to search for. (required)
         :type query: str
@@ -2545,8 +2569,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListThreadsProfile:
-        """Accounts matching a name: the first 10, without their counts. 1 credit.
+        """Accounts matching a name, the first 10.
 
+        Without their counts. 1 credit.
 
         :param query: A name or username to search for. (required)
         :type query: str
@@ -2617,8 +2642,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListThreadsProfile]:
-        """Accounts matching a name: the first 10, without their counts. 1 credit.
+        """Accounts matching a name, the first 10.
 
+        Without their counts. 1 credit.
 
         :param query: A name or username to search for. (required)
         :type query: str
@@ -2689,8 +2715,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Accounts matching a name: the first 10, without their counts. 1 credit.
+        """Accounts matching a name, the first 10.
 
+        Without their counts. 1 credit.
 
         :param query: A name or username to search for. (required)
         :type query: str
@@ -2828,8 +2855,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListThreadsPost:
-        """The feed Threads gives a visitor now: about 20 threads in all. 1 credit a page.
+        """The feed Threads gives a visitor now.
 
+        About 20 threads in all. 1 credit a page.
 
         :param cursor: `nextCursor` of the previous page.
         :type cursor: str
@@ -2900,8 +2928,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListThreadsPost]:
-        """The feed Threads gives a visitor now: about 20 threads in all. 1 credit a page.
+        """The feed Threads gives a visitor now.
 
+        About 20 threads in all. 1 credit a page.
 
         :param cursor: `nextCursor` of the previous page.
         :type cursor: str
@@ -2972,8 +3001,9 @@ class ThreadsApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """The feed Threads gives a visitor now: about 20 threads in all. 1 credit a page.
+        """The feed Threads gives a visitor now.
 
+        About 20 threads in all. 1 credit a page.
 
         :param cursor: `nextCursor` of the previous page.
         :type cursor: str

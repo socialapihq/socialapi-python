@@ -65,8 +65,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemFacebookEvent:
-        """An event: name, description, when, where, its host, how many are going, its tickets' link. 1 credit.
+        """One event, with its time, place and host.
 
+        Name, description, when, where, its host, how many are going and its tickets' link. 1 credit.
 
         :param url: The event's link (`https://www.facebook.com/events/<id>/`).
         :type url: str
@@ -141,8 +142,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemFacebookEvent]:
-        """An event: name, description, when, where, its host, how many are going, its tickets' link. 1 credit.
+        """One event, with its time, place and host.
 
+        Name, description, when, where, its host, how many are going and its tickets' link. 1 credit.
 
         :param url: The event's link (`https://www.facebook.com/events/<id>/`).
         :type url: str
@@ -217,8 +219,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """An event: name, description, when, where, its host, how many are going, its tickets' link. 1 credit.
+        """One event, with its time, place and host.
 
+        Name, description, when, where, its host, how many are going and its tickets' link. 1 credit.
 
         :param url: The event's link (`https://www.facebook.com/events/<id>/`).
         :type url: str
@@ -366,8 +369,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListFacebookEvent:
-        """A city's upcoming events, 12 a page. 1 credit a page.
+        """A city's upcoming events, 12 a page.
 
+        1 credit a page.
 
         :param url: A city's events page (`https://www.facebook.com/events/explore/us-new-york/108424279189115/`).
         :type url: str
@@ -446,8 +450,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListFacebookEvent]:
-        """A city's upcoming events, 12 a page. 1 credit a page.
+        """A city's upcoming events, 12 a page.
 
+        1 credit a page.
 
         :param url: A city's events page (`https://www.facebook.com/events/explore/us-new-york/108424279189115/`).
         :type url: str
@@ -526,8 +531,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A city's upcoming events, 12 a page. 1 credit a page.
+        """A city's upcoming events, 12 a page.
 
+        1 credit a page.
 
         :param url: A city's events page (`https://www.facebook.com/events/explore/us-new-york/108424279189115/`).
         :type url: str
@@ -682,8 +688,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListFacebookEvent:
-        """Events matching a query: two short pages, all Facebook shows a visitor. 1 credit a page.
+        """Events matching a query.
 
+        Two short pages, all Facebook shows a visitor. 1 credit a page.
 
         :param query: What to search for. (required)
         :type query: str
@@ -758,8 +765,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListFacebookEvent]:
-        """Events matching a query: two short pages, all Facebook shows a visitor. 1 credit a page.
+        """Events matching a query.
 
+        Two short pages, all Facebook shows a visitor. 1 credit a page.
 
         :param query: What to search for. (required)
         :type query: str
@@ -834,8 +842,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Events matching a query: two short pages, all Facebook shows a visitor. 1 credit a page.
+        """Events matching a query.
 
+        Two short pages, all Facebook shows a visitor. 1 credit a page.
 
         :param query: What to search for. (required)
         :type query: str
@@ -982,8 +991,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemFacebookListing:
-        """One Marketplace listing: title, description, price, condition, place, seller. 1 credit.
+        """One Marketplace listing.
 
+        Title, description, price, condition, place and seller. 1 credit.
 
         :param url: The listing's link (`https://www.facebook.com/marketplace/item/<id>/`).
         :type url: str
@@ -1058,8 +1068,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemFacebookListing]:
-        """One Marketplace listing: title, description, price, condition, place, seller. 1 credit.
+        """One Marketplace listing.
 
+        Title, description, price, condition, place and seller. 1 credit.
 
         :param url: The listing's link (`https://www.facebook.com/marketplace/item/<id>/`).
         :type url: str
@@ -1134,8 +1145,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """One Marketplace listing: title, description, price, condition, place, seller. 1 credit.
+        """One Marketplace listing.
 
+        Title, description, price, condition, place and seller. 1 credit.
 
         :param url: The listing's link (`https://www.facebook.com/marketplace/item/<id>/`).
         :type url: str
@@ -1285,8 +1297,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListFacebookListing:
-        """Marketplace listings for a query around a point: title, price, place, seller, about 14, the first page Facebook shows a visitor. 1 credit.
+        """Marketplace listings for a query near a point.
 
+        Title, price, place and seller of each, about 14, the first page Facebook shows a visitor. 1 credit.
 
         :param query: What to look for. (required)
         :type query: str
@@ -1373,8 +1386,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListFacebookListing]:
-        """Marketplace listings for a query around a point: title, price, place, seller, about 14, the first page Facebook shows a visitor. 1 credit.
+        """Marketplace listings for a query near a point.
 
+        Title, price, place and seller of each, about 14, the first page Facebook shows a visitor. 1 credit.
 
         :param query: What to look for. (required)
         :type query: str
@@ -1461,8 +1475,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """Marketplace listings for a query around a point: title, price, place, seller, about 14, the first page Facebook shows a visitor. 1 credit.
+        """Marketplace listings for a query near a point.
 
+        Title, price, place and seller of each, about 14, the first page Facebook shows a visitor. 1 credit.
 
         :param query: What to look for. (required)
         :type query: str
@@ -1632,8 +1647,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemFacebookPost:
-        """One post, reel or video: text, author, time, reactions by kind, comment and share counts, its media and the caption tracks it has. 1 credit.
+        """One post, reel or video with its counts and media.
 
+        Text, author, time, reactions by kind, comment and share counts, its media and the caption tracks it has. 1 credit.
 
         :param url: The post's link (`https://www.facebook.com/nike/posts/pfbid…`, a reel's, a video's).
         :type url: str
@@ -1704,8 +1720,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemFacebookPost]:
-        """One post, reel or video: text, author, time, reactions by kind, comment and share counts, its media and the caption tracks it has. 1 credit.
+        """One post, reel or video with its counts and media.
 
+        Text, author, time, reactions by kind, comment and share counts, its media and the caption tracks it has. 1 credit.
 
         :param url: The post's link (`https://www.facebook.com/nike/posts/pfbid…`, a reel's, a video's).
         :type url: str
@@ -1776,8 +1793,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """One post, reel or video: text, author, time, reactions by kind, comment and share counts, its media and the caption tracks it has. 1 credit.
+        """One post, reel or video with its counts and media.
 
+        Text, author, time, reactions by kind, comment and share counts, its media and the caption tracks it has. 1 credit.
 
         :param url: The post's link (`https://www.facebook.com/nike/posts/pfbid…`, a reel's, a video's).
         :type url: str
@@ -1916,8 +1934,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListFacebookComment:
-        """The replies to one comment, about 10 a page, named by its `ext.repliesToken`. 1 credit a page.
+        """The replies to one comment, about 10 a page.
 
+        The comment is named by its `ext.repliesToken`. 1 credit a page.
 
         :param token: The comment's `ext.repliesToken` (present when it has replies). (required)
         :type token: str
@@ -1992,8 +2011,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListFacebookComment]:
-        """The replies to one comment, about 10 a page, named by its `ext.repliesToken`. 1 credit a page.
+        """The replies to one comment, about 10 a page.
 
+        The comment is named by its `ext.repliesToken`. 1 credit a page.
 
         :param token: The comment's `ext.repliesToken` (present when it has replies). (required)
         :type token: str
@@ -2068,8 +2088,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """The replies to one comment, about 10 a page, named by its `ext.repliesToken`. 1 credit a page.
+        """The replies to one comment, about 10 a page.
 
+        The comment is named by its `ext.repliesToken`. 1 credit a page.
 
         :param token: The comment's `ext.repliesToken` (present when it has replies). (required)
         :type token: str
@@ -2216,8 +2237,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListFacebookComment:
-        """A post's comments, most relevant first, with their reactions and how many replies, 10 a page. A comment with replies carries `ext.repliesToken` for `/v1/facebook/post/comment/replies`. 1 credit a page.
+        """A post's comments, most relevant first, 10 a page.
 
+        With their reactions and reply counts. A comment with replies carries `ext.repliesToken` for `/v1/facebook/post/comment/replies`. 1 credit a page.
 
         :param url: The post's link.
         :type url: str
@@ -2292,8 +2314,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListFacebookComment]:
-        """A post's comments, most relevant first, with their reactions and how many replies, 10 a page. A comment with replies carries `ext.repliesToken` for `/v1/facebook/post/comment/replies`. 1 credit a page.
+        """A post's comments, most relevant first, 10 a page.
 
+        With their reactions and reply counts. A comment with replies carries `ext.repliesToken` for `/v1/facebook/post/comment/replies`. 1 credit a page.
 
         :param url: The post's link.
         :type url: str
@@ -2368,8 +2391,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A post's comments, most relevant first, with their reactions and how many replies, 10 a page. A comment with replies carries `ext.repliesToken` for `/v1/facebook/post/comment/replies`. 1 credit a page.
+        """A post's comments, most relevant first, 10 a page.
 
+        With their reactions and reply counts. A comment with replies carries `ext.repliesToken` for `/v1/facebook/post/comment/replies`. 1 credit a page.
 
         :param url: The post's link.
         :type url: str
@@ -2516,8 +2540,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemFacebookTranscript:
-        """A video's captions as text with their times: Facebook's own track, in the video's language where it lists one, else a translation (`translated` says so). `404` when the video has none. 5 credits.
+        """A video's captions as text with their times.
 
+        Facebook's own track, in the video's language where it lists one, else a translation (`translated` says so). `404` when the video has none. 5 credits.
 
         :param url: The video's or reel's link.
         :type url: str
@@ -2592,8 +2617,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemFacebookTranscript]:
-        """A video's captions as text with their times: Facebook's own track, in the video's language where it lists one, else a translation (`translated` says so). `404` when the video has none. 5 credits.
+        """A video's captions as text with their times.
 
+        Facebook's own track, in the video's language where it lists one, else a translation (`translated` says so). `404` when the video has none. 5 credits.
 
         :param url: The video's or reel's link.
         :type url: str
@@ -2668,8 +2694,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A video's captions as text with their times: Facebook's own track, in the video's language where it lists one, else a translation (`translated` says so). `404` when the video has none. 5 credits.
+        """A video's captions as text with their times.
 
+        Facebook's own track, in the video's language where it lists one, else a translation (`translated` says so). `404` when the video has none. 5 credits.
 
         :param url: The video's or reel's link.
         :type url: str
@@ -2816,8 +2843,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ItemFacebookProfile:
-        """A page or a public person: name, category, bio, verified, follower count (as Facebook rounds it, \"39M\"), cover and the intro's lines (address, phone, links). 1 credit.
+        """A Page or a public person, with its follower count.
 
+        Name, category, bio, verified, followers as Facebook rounds them (\"39M\"), cover and the intro's lines (address, phone, links). 1 credit.
 
         :param handle: The page's or person's name in its link (`nike`), or its numeric id.
         :type handle: str
@@ -2892,8 +2920,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ItemFacebookProfile]:
-        """A page or a public person: name, category, bio, verified, follower count (as Facebook rounds it, \"39M\"), cover and the intro's lines (address, phone, links). 1 credit.
+        """A Page or a public person, with its follower count.
 
+        Name, category, bio, verified, followers as Facebook rounds them (\"39M\"), cover and the intro's lines (address, phone, links). 1 credit.
 
         :param handle: The page's or person's name in its link (`nike`), or its numeric id.
         :type handle: str
@@ -2968,8 +2997,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A page or a public person: name, category, bio, verified, follower count (as Facebook rounds it, \"39M\"), cover and the intro's lines (address, phone, links). 1 credit.
+        """A Page or a public person, with its follower count.
 
+        Name, category, bio, verified, followers as Facebook rounds them (\"39M\"), cover and the intro's lines (address, phone, links). 1 credit.
 
         :param handle: The page's or person's name in its link (`nike`), or its numeric id.
         :type handle: str
@@ -3117,8 +3147,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListFacebookPost:
-        """A page's or person's photos, 8 a page. 1 credit a page.
+        """A Page's or person's photos, 8 a page.
 
+        1 credit a page.
 
         :param handle: The page's or person's name in its link, or its numeric id.
         :type handle: str
@@ -3197,8 +3228,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListFacebookPost]:
-        """A page's or person's photos, 8 a page. 1 credit a page.
+        """A Page's or person's photos, 8 a page.
 
+        1 credit a page.
 
         :param handle: The page's or person's name in its link, or its numeric id.
         :type handle: str
@@ -3277,8 +3309,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A page's or person's photos, 8 a page. 1 credit a page.
+        """A Page's or person's photos, 8 a page.
 
+        1 credit a page.
 
         :param handle: The page's or person's name in its link, or its numeric id.
         :type handle: str
@@ -3434,8 +3467,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListFacebookPost:
-        """A page's or person's posts, newest first, with their reactions by kind, comments, shares and video views: 3 a page, as Facebook pages them. 1 credit a page.
+        """A Page's or person's posts, newest first, 3 a page.
 
+        With reactions by kind, comments, shares and a video's views, 3 a page as Facebook pages them. 1 credit a page.
 
         :param handle: The page's or person's name in its link, or its numeric id.
         :type handle: str
@@ -3514,8 +3548,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListFacebookPost]:
-        """A page's or person's posts, newest first, with their reactions by kind, comments, shares and video views: 3 a page, as Facebook pages them. 1 credit a page.
+        """A Page's or person's posts, newest first, 3 a page.
 
+        With reactions by kind, comments, shares and a video's views, 3 a page as Facebook pages them. 1 credit a page.
 
         :param handle: The page's or person's name in its link, or its numeric id.
         :type handle: str
@@ -3594,8 +3629,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A page's or person's posts, newest first, with their reactions by kind, comments, shares and video views: 3 a page, as Facebook pages them. 1 credit a page.
+        """A Page's or person's posts, newest first, 3 a page.
 
+        With reactions by kind, comments, shares and a video's views, 3 a page as Facebook pages them. 1 credit a page.
 
         :param handle: The page's or person's name in its link, or its numeric id.
         :type handle: str
@@ -3751,8 +3787,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ListFacebookPost:
-        """A page's videos with their plays and reactions, about 6 a page. Only a Page has one. 1 credit a page.
+        """A Page's videos with their plays, about 6 a page.
 
+        With their reactions. Only a Page has a videos tab. 1 credit a page.
 
         :param handle: The page's or person's name in its link, or its numeric id.
         :type handle: str
@@ -3831,8 +3868,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> ApiResponse[ListFacebookPost]:
-        """A page's videos with their plays and reactions, about 6 a page. Only a Page has one. 1 credit a page.
+        """A Page's videos with their plays, about 6 a page.
 
+        With their reactions. Only a Page has a videos tab. 1 credit a page.
 
         :param handle: The page's or person's name in its link, or its numeric id.
         :type handle: str
@@ -3911,8 +3949,9 @@ class FacebookApi:
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
     ) -> RESTResponseType:
-        """A page's videos with their plays and reactions, about 6 a page. Only a Page has one. 1 credit a page.
+        """A Page's videos with their plays, about 6 a page.
 
+        With their reactions. Only a Page has a videos tab. 1 credit a page.
 
         :param handle: The page's or person's name in its link, or its numeric id.
         :type handle: str

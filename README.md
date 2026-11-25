@@ -116,19 +116,19 @@ The generated classes (`TikTokApi`, `InstagramApi`…) are exported too. Their `
 
 | Method | Description |
 | --- | --- |
-| `facebook.event()` | An event |
+| `facebook.event()` | One event |
 | `facebook.events()` | A city's upcoming events |
 | `facebook.events_search()` | Events matching a query |
 | `facebook.marketplace_item()` | One Marketplace listing |
-| `facebook.marketplace_search()` | Marketplace listings for a query around a point |
+| `facebook.marketplace_search()` | Marketplace listings for a query near a point |
 | `facebook.post()` | One post |
 | `facebook.post_comment_replies()` | The replies to one comment |
 | `facebook.post_comments()` | A post's comments |
 | `facebook.post_transcript()` | A video's captions as text with their times |
-| `facebook.profile()` | A page or a public person |
-| `facebook.profile_photos()` | A page's or person's photos |
-| `facebook.profile_posts()` | A page's or person's posts |
-| `facebook.profile_videos()` | A page's videos with their plays and reactions |
+| `facebook.profile()` | A Page or a public person |
+| `facebook.profile_photos()` | A Page's or person's photos |
+| `facebook.profile_posts()` | A Page's or person's posts |
+| `facebook.profile_videos()` | A Page's videos with their plays |
 
 ### Instagram
 
@@ -136,29 +136,29 @@ The generated classes (`TikTokApi`, `InstagramApi`…) are exported too. Their `
 | --- | --- |
 | `instagram.highlight()` | A story highlight's stories |
 | `instagram.location()` | A place |
-| `instagram.location_posts()` | A place's top posts with their likes |
-| `instagram.post()` | One post or reel |
+| `instagram.location_posts()` | A place's top posts with their likes and comments |
+| `instagram.post()` | One post or reel with its counts |
 | `instagram.post_comments()` | A post's comments with their likes |
-| `instagram.profile()` | A profile |
+| `instagram.profile()` | A profile with its follower and following counts |
 | `instagram.profile_highlights()` | An account's story highlights |
-| `instagram.profile_posts()` | An account's posts with their likes |
+| `instagram.profile_posts()` | An account's posts |
 | `instagram.profile_reels()` | An account's reels with their plays |
 | `instagram.profile_similar()` | Accounts like this one |
-| `instagram.search()` | Posts for a word or hashtag |
+| `instagram.search()` | Popular posts for a word or hashtag |
 | `instagram.sound()` | A sound |
 | `instagram.sound_posts()` | The reels that use a sound |
-| `instagram.trending()` | The reels feed Instagram gives a visitor now |
-| `instagram.trending_topics()` | The explore page |
+| `instagram.trending()` | The reels feed Instagram gives a visitor |
+| `instagram.trending_topics()` | The explore page's trending keywords and accounts |
 
 ### Threads
 
 | Method | Description |
 | --- | --- |
-| `threads.post()` | One thread |
+| `threads.post()` | One thread with its counts |
 | `threads.post_comments()` | A thread's replies |
-| `threads.profile()` | A profile |
+| `threads.profile()` | A profile with its follower count |
 | `threads.profile_media()` | An account's threads with photos or videos |
-| `threads.profile_posts()` | An account's threads with their likes |
+| `threads.profile_posts()` | An account's threads |
 | `threads.profile_replies()` | An account's replies to other threads |
 | `threads.profile_reposts()` | Other people's threads an account reposted |
 | `threads.search()` | Threads matching a query |
@@ -170,16 +170,16 @@ The generated classes (`TikTokApi`, `InstagramApi`…) are exported too. Their `
 | Method | Description |
 | --- | --- |
 | `tiktok.collection_posts()` | The posts of a public saved collection |
-| `tiktok.hashtag()` | A hashtag |
+| `tiktok.hashtag()` | A hashtag with its post and view counts |
 | `tiktok.hashtag_posts()` | Posts under a hashtag |
-| `tiktok.live()` | A live room |
+| `tiktok.live()` | Whether an account is live |
 | `tiktok.playlist_posts()` | The posts of a playlist |
-| `tiktok.post()` | One post |
+| `tiktok.post()` | One post with its counts |
 | `tiktok.post_comment_replies()` | The replies to one comment |
 | `tiktok.post_comments()` | A post's top-level comments |
 | `tiktok.post_related()` | Posts TikTok recommends beside one post |
 | `tiktok.post_transcript()` | A post's captions as text with their times |
-| `tiktok.profile()` | A profile |
+| `tiktok.profile()` | A profile with its exact follower and like counts |
 | `tiktok.profile_followers()` | An account's followers |
 | `tiktok.profile_following()` | The accounts an account follows |
 | `tiktok.profile_liked()` | Posts an account liked |
@@ -190,13 +190,13 @@ The generated classes (`TikTokApi`, `InstagramApi`…) are exported too. Their `
 | `tiktok.search_users()` | Accounts matching a query |
 | `tiktok.sound()` | A sound |
 | `tiktok.sound_posts()` | Posts that use a sound |
-| `tiktok.trending()` | What the explore page shows a guest now |
+| `tiktok.trending()` | What the explore page shows now |
 
 ### Account
 
 | Method | Description |
 | --- | --- |
-| `account.get_credits()` | The credits left |
+| `account.get_credits()` | The credits left in your workspace |
 
 <!-- END GENERATED API REFERENCE -->
 
