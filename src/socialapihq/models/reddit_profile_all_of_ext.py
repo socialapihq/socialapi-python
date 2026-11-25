@@ -34,7 +34,7 @@ class RedditProfileAllOfExt(BaseModel):
     karma: RedditKarma
     moderator: StrictBool = Field(description="Moderates a community.")
     premium: StrictBool = Field(description="Has Reddit Premium.")
-    suspended: StrictBool = Field(description="Suspended: Reddit shows nothing else of it.")
+    suspended: StrictBool = Field(description="Suspended, on an account in a list: Reddit shows nothing else of it. A suspended account asked for by its name is refused instead (`410 SUSPENDED`).")
     trophies: List[RedditTrophy] = Field(description="Its trophies (on `/profile` only).")
     __properties: ClassVar[List[str]] = ["bannerUrl", "employee", "karma", "moderator", "premium", "suspended", "trophies"]
 
