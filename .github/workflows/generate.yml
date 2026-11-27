@@ -46,13 +46,24 @@ jobs:
           distribution: microsoft
           java-version: 21
 
-      # The npm wrapper downloads the generator's jar on first use; fetch it up front, with
-      # retries, so a slow download does not fail the generation step.
+      # The generator's jar, kept between runs (openapitools.json's storageDir) for its
+      # version: Maven Central refuses GitHub's shared runner addresses now and then
+      # ("Your ip has exceeded rate limits", a 429, which failed a run on 2026-11-27), so
+      # it is downloaded only when the version changes.
+      - name: Cache OpenAPI Generator
+        uses: actions/cache@v4
+        with:
+          path: ~/.openapi-generator
+          key: openapi-generator-${{ hashFiles('openapitools.json') }}
+
+      # The npm wrapper downloads the jar on first use; fetch it up front when the cache
+      # had none, waiting longer each time (about five minutes in all) for a rate limit
+      # to pass, so a refused download does not fail the generation step.
       - name: Fetch OpenAPI Generator
         run: |
-          for attempt in 1 2 3; do
+          for wait in 15 30 60 120 0; do
             npx --yes @openapitools/openapi-generator-cli version && exit 0
-            sleep $((attempt * 5))
+            [ "$wait" -gt 0 ] && sleep "$wait"
           done
           exit 1
 
