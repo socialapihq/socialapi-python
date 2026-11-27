@@ -147,6 +147,26 @@ The generated classes (`TikTokApi`, `InstagramApi`…) are exported too. Their `
 | `bluesky.trending()` | The posts of Bluesky's Discover feed |
 | `bluesky.trending_topics()` | The topics trending now |
 
+### Douyin
+
+| Method | Description |
+| --- | --- |
+| `douyin.hashtag()` | A hashtag with its views |
+| `douyin.live()` | A live room |
+| `douyin.playlist_posts()` | A series' posts |
+| `douyin.post()` | One post with its likes |
+| `douyin.post_comment_replies()` | A comment's replies |
+| `douyin.post_comments()` | A post's comments |
+| `douyin.post_related()` | Posts like a post |
+| `douyin.profile()` | An account with its followers |
+| `douyin.profile_playlists()` | An account's series |
+| `douyin.profile_posts()` | An account's latest posts |
+| `douyin.search_suggestions()` | What Douyin's search box suggests for a query |
+| `douyin.sound()` | A sound with the number of posts using it |
+| `douyin.sound_posts()` | Posts using a sound |
+| `douyin.trending()` | Douyin's hot search list |
+| `douyin.trending_posts()` | Recommended posts |
+
 ### Facebook
 
 | Method | Description |
@@ -184,6 +204,47 @@ The generated classes (`TikTokApi`, `InstagramApi`…) are exported too. Their `
 | `instagram.sound_posts()` | The reels that use a sound |
 | `instagram.trending()` | The reels feed Instagram gives a visitor |
 | `instagram.trending_topics()` | The explore page's trending keywords and accounts |
+
+### Kick
+
+| Method | Description |
+| --- | --- |
+| `kick.category()` | A category with its viewers and followers |
+| `kick.category_clips()` | A category's clips |
+| `kick.category_lives()` | A category's live broadcasts |
+| `kick.live()` | Whether a channel is live |
+| `kick.post()` | One video or clip with its views and a link to play it |
+| `kick.post_comments()` | A video's chat replay |
+| `kick.post_transcript()` | A video's or clip's captions as text |
+| `kick.profile()` | A channel with its follower count and links |
+| `kick.profile_clips()` | A channel's clips |
+| `kick.profile_posts()` | A channel's videos |
+| `kick.search_categories()` | Categories matching a search |
+| `kick.search_lives()` | Live broadcasts matching a search |
+| `kick.search_users()` | Channels matching a search |
+| `kick.trending()` | The live broadcasts most watched now |
+| `kick.trending_categories()` | The categories most watched now |
+| `kick.trending_clips()` | The site's most viewed clips |
+
+### LinkedIn
+
+| Method | Description |
+| --- | --- |
+| `linkedin.ad()` | One ad with who paid for it and its reach |
+| `linkedin.ads_search()` | Ads from LinkedIn's Ad Library |
+| `linkedin.article()` | An article with its text |
+| `linkedin.company()` | A company's page with its followers and employees |
+| `linkedin.company_jobs()` | A company's open jobs |
+| `linkedin.company_posts()` | A company's posts |
+| `linkedin.job()` | One job posting with its description |
+| `linkedin.post()` | One post with its reactions and comments |
+| `linkedin.post_comments()` | A post's first comments |
+| `linkedin.post_transcript()` | A post's video's captions as text |
+| `linkedin.profile()` | A member's public profile with its followers |
+| `linkedin.profile_articles()` | A member's articles |
+| `linkedin.profile_posts()` | A member's latest posts |
+| `linkedin.search_jobs()` | Job postings for a search |
+| `linkedin.search_users()` | Members with a first and last name |
 
 ### Pinterest
 
@@ -230,6 +291,17 @@ The generated classes (`TikTokApi`, `InstagramApi`…) are exported too. Their `
 | `reddit.subreddit_search()` | Posts in one community matching a query |
 | `reddit.trending()` | What is hot on Reddit now |
 | `reddit.trending_searches()` | The searches Reddit shows as trending now |
+
+### Telegram
+
+| Method | Description |
+| --- | --- |
+| `telegram.invite()` | What an invite link opens |
+| `telegram.post()` | One channel post or group message |
+| `telegram.post_comments()` | A post's comments |
+| `telegram.profile()` | A channel |
+| `telegram.profile_posts()` | A channel's posts |
+| `telegram.profile_search()` | A search inside a channel |
 
 ### Threads
 
@@ -297,6 +369,24 @@ The generated classes (`TikTokApi`, `InstagramApi`…) are exported too. Their `
 | `twitch.search_users()` | Channels matching a query |
 | `twitch.trending()` | The live channels most watched now |
 | `twitch.trending_categories()` | The categories most watched now |
+
+### X
+
+| Method | Description |
+| --- | --- |
+| `x.community()` | A community with its members |
+| `x.community_posts()` | A community's top posts |
+| `x.live()` | A live video broadcast |
+| `x.post()` | One post with its views |
+| `x.post_comments()` | The top replies to a post |
+| `x.post_transcript()` | A video post's captions as text |
+| `x.profile()` | An account with its follower and post counts |
+| `x.profile_highlights()` | The posts an account highlighted |
+| `x.profile_posts()` | An account's posts and reposts |
+| `x.profile_similar()` | Accounts like one |
+| `x.space()` | A Space with its hosts |
+| `x.trending()` | The topics trending in a country |
+| `x.trending_posts()` | The posts trending on X today |
 
 ### YouTube
 

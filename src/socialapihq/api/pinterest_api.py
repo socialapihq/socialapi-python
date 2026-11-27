@@ -5272,7 +5272,7 @@ class PinterestApi:
     ) -> ListPinterestTrend:
         """What a country searches for on Pinterest Trends.
 
-        The 50 terms growing fastest, or the month's, the year's or the season's most searched, each with its change over the week, month and year. Pinterest updates them daily. 1 credit.
+        The 50 terms growing fastest, or the month's, the year's or the season's most searched, each with its change over the week, month and year. Pinterest updates them daily. 10 credits.
 
         :param country: The country, as a two-letter code (`us`, the default). Pinterest Trends covers the US, Canada, most of Europe, Latin America and Australia; it pairs the UK with Ireland and Australia with New Zealand.
         :type country: str
@@ -5349,7 +5349,7 @@ class PinterestApi:
     ) -> ApiResponse[ListPinterestTrend]:
         """What a country searches for on Pinterest Trends.
 
-        The 50 terms growing fastest, or the month's, the year's or the season's most searched, each with its change over the week, month and year. Pinterest updates them daily. 1 credit.
+        The 50 terms growing fastest, or the month's, the year's or the season's most searched, each with its change over the week, month and year. Pinterest updates them daily. 10 credits.
 
         :param country: The country, as a two-letter code (`us`, the default). Pinterest Trends covers the US, Canada, most of Europe, Latin America and Australia; it pairs the UK with Ireland and Australia with New Zealand.
         :type country: str
@@ -5426,7 +5426,7 @@ class PinterestApi:
     ) -> RESTResponseType:
         """What a country searches for on Pinterest Trends.
 
-        The 50 terms growing fastest, or the month's, the year's or the season's most searched, each with its change over the week, month and year. Pinterest updates them daily. 1 credit.
+        The 50 terms growing fastest, or the month's, the year's or the season's most searched, each with its change over the week, month and year. Pinterest updates them daily. 10 credits.
 
         :param country: The country, as a two-letter code (`us`, the default). Pinterest Trends covers the US, Canada, most of Europe, Latin America and Australia; it pairs the UK with Ireland and Australia with New Zealand.
         :type country: str

@@ -675,7 +675,7 @@ class RedditApi:
     ) -> ListRedditComment:
         """A post's comments with their replies, a page at a time.
 
-        About 25 top-level comments a first page (10 a next), each with its replies a few levels deep, `parentId` naming the comment answered; sorted `best`, `top`, `new`, `old`, `controversial` or `qa`. 1 credit a page.
+        About 25 top-level comments a first page (10 a next), each with its replies a few levels deep, `parentId` naming the comment answered; sorted `best`, `top`, `new`, `old`, `controversial` or `qa`. 5 credits a page.
 
         :param url: The post's link.
         :type url: str
@@ -760,7 +760,7 @@ class RedditApi:
     ) -> ApiResponse[ListRedditComment]:
         """A post's comments with their replies, a page at a time.
 
-        About 25 top-level comments a first page (10 a next), each with its replies a few levels deep, `parentId` naming the comment answered; sorted `best`, `top`, `new`, `old`, `controversial` or `qa`. 1 credit a page.
+        About 25 top-level comments a first page (10 a next), each with its replies a few levels deep, `parentId` naming the comment answered; sorted `best`, `top`, `new`, `old`, `controversial` or `qa`. 5 credits a page.
 
         :param url: The post's link.
         :type url: str
@@ -845,7 +845,7 @@ class RedditApi:
     ) -> RESTResponseType:
         """A post's comments with their replies, a page at a time.
 
-        About 25 top-level comments a first page (10 a next), each with its replies a few levels deep, `parentId` naming the comment answered; sorted `best`, `top`, `new`, `old`, `controversial` or `qa`. 1 credit a page.
+        About 25 top-level comments a first page (10 a next), each with its replies a few levels deep, `parentId` naming the comment answered; sorted `best`, `top`, `new`, `old`, `controversial` or `qa`. 5 credits a page.
 
         :param url: The post's link.
         :type url: str
@@ -1010,7 +1010,7 @@ class RedditApi:
     ) -> ItemRedditTranscript:
         """A video post's captions as text.
 
-        Reddit's own caption track, as timed lines and as plain text, for videos Reddit captioned. 5 credits.
+        Reddit's own caption track, as timed lines and as plain text, for videos Reddit captioned. 10 credits.
 
         :param url: The post's link (`https://www.reddit.com/r/AskReddit/comments/1y4hcb5/…`), or a `redd.it` one.
         :type url: str
@@ -1087,7 +1087,7 @@ class RedditApi:
     ) -> ApiResponse[ItemRedditTranscript]:
         """A video post's captions as text.
 
-        Reddit's own caption track, as timed lines and as plain text, for videos Reddit captioned. 5 credits.
+        Reddit's own caption track, as timed lines and as plain text, for videos Reddit captioned. 10 credits.
 
         :param url: The post's link (`https://www.reddit.com/r/AskReddit/comments/1y4hcb5/…`), or a `redd.it` one.
         :type url: str
@@ -1164,7 +1164,7 @@ class RedditApi:
     ) -> RESTResponseType:
         """A video post's captions as text.
 
-        Reddit's own caption track, as timed lines and as plain text, for videos Reddit captioned. 5 credits.
+        Reddit's own caption track, as timed lines and as plain text, for videos Reddit captioned. 10 credits.
 
         :param url: The post's link (`https://www.reddit.com/r/AskReddit/comments/1y4hcb5/…`), or a `redd.it` one.
         :type url: str
@@ -1619,7 +1619,7 @@ class RedditApi:
     ) -> ListRedditComment:
         """An account's comments, newest first, 25 a page.
 
-        Each with its score and the post it is on. 1 credit a page.
+        Each with its score and the post it is on. 2 credits a comment returned (a full page 50; an account with none costs nothing).
 
         :param handle: The username, with or without `u/`.
         :type handle: str
@@ -1708,7 +1708,7 @@ class RedditApi:
     ) -> ApiResponse[ListRedditComment]:
         """An account's comments, newest first, 25 a page.
 
-        Each with its score and the post it is on. 1 credit a page.
+        Each with its score and the post it is on. 2 credits a comment returned (a full page 50; an account with none costs nothing).
 
         :param handle: The username, with or without `u/`.
         :type handle: str
@@ -1797,7 +1797,7 @@ class RedditApi:
     ) -> RESTResponseType:
         """An account's comments, newest first, 25 a page.
 
-        Each with its score and the post it is on. 1 credit a page.
+        Each with its score and the post it is on. 2 credits a comment returned (a full page 50; an account with none costs nothing).
 
         :param handle: The username, with or without `u/`.
         :type handle: str

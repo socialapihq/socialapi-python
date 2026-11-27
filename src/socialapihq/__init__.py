@@ -14,19 +14,24 @@
 """  # noqa: E501
 
 
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 
 # Define package exports
 __all__ = [
     "AccountApi",
     "BlueskyApi",
+    "DouyinApi",
     "FacebookApi",
     "InstagramApi",
+    "KickApi",
+    "LinkedInApi",
     "PinterestApi",
     "RedditApi",
+    "TelegramApi",
     "ThreadsApi",
     "TikTokApi",
     "TwitchApi",
+    "XApi",
     "YouTubeApi",
     "ApiResponse",
     "ApiClient",
@@ -55,6 +60,24 @@ __all__ = [
     "BlueskyStarterPack",
     "BlueskyTrend",
     "CreditsBody",
+    "DouyinComment",
+    "DouyinCommentAllOfExt",
+    "DouyinHashtag",
+    "DouyinHashtagAllOfExt",
+    "DouyinLive",
+    "DouyinLiveAllOfExt",
+    "DouyinPlaylist",
+    "DouyinPlaylistAllOfExt",
+    "DouyinPost",
+    "DouyinPostAllOfExt",
+    "DouyinPostKind",
+    "DouyinProfile",
+    "DouyinProfileAllOfExt",
+    "DouyinSeriesRef",
+    "DouyinSound",
+    "DouyinSoundAllOfExt",
+    "DouyinSoundRef",
+    "DouyinTrend",
     "ErrorBody",
     "ErrorCode",
     "FacebookCaptionTrack",
@@ -94,6 +117,11 @@ __all__ = [
     "ItemBlueskyPost",
     "ItemBlueskyProfile",
     "ItemBlueskyStarterPack",
+    "ItemDouyinHashtag",
+    "ItemDouyinLive",
+    "ItemDouyinPost",
+    "ItemDouyinProfile",
+    "ItemDouyinSound",
     "ItemFacebookEvent",
     "ItemFacebookListing",
     "ItemFacebookPost",
@@ -103,6 +131,17 @@ __all__ = [
     "ItemInstagramPost",
     "ItemInstagramProfile",
     "ItemInstagramSound",
+    "ItemKickCategory",
+    "ItemKickLive",
+    "ItemKickPost",
+    "ItemKickProfile",
+    "ItemKickTranscript",
+    "ItemLinkedInAd",
+    "ItemLinkedInCompany",
+    "ItemLinkedInJob",
+    "ItemLinkedInPost",
+    "ItemLinkedInProfile",
+    "ItemLinkedInTranscript",
     "ItemPinterestBoard",
     "ItemPinterestPost",
     "ItemPinterestProfile",
@@ -112,6 +151,9 @@ __all__ = [
     "ItemRedditProfile",
     "ItemRedditSubreddit",
     "ItemRedditTranscript",
+    "ItemTelegramInvite",
+    "ItemTelegramPost",
+    "ItemTelegramProfile",
     "ItemThreadsPost",
     "ItemThreadsProfile",
     "ItemTikTokHashtag",
@@ -124,11 +166,53 @@ __all__ = [
     "ItemTwitchLive",
     "ItemTwitchPost",
     "ItemTwitchProfile",
+    "ItemXBroadcast",
+    "ItemXCommunity",
+    "ItemXPost",
+    "ItemXProfile",
+    "ItemXSpace",
+    "ItemXTranscript",
     "ItemYouTubeHashtag",
     "ItemYouTubePlaylist",
     "ItemYouTubePost",
     "ItemYouTubeProfile",
     "ItemYouTubeTranscript",
+    "KickCategory",
+    "KickCategoryRef",
+    "KickComment",
+    "KickCommentAllOfExt",
+    "KickCue",
+    "KickLink",
+    "KickLive",
+    "KickLiveAllOfExt",
+    "KickPost",
+    "KickPostAllOfExt",
+    "KickPostKind",
+    "KickProfile",
+    "KickProfileAllOfExt",
+    "KickSocial",
+    "KickTranscript",
+    "LinkedInAd",
+    "LinkedInAdCountry",
+    "LinkedInAdTargeting",
+    "LinkedInCard",
+    "LinkedInComment",
+    "LinkedInCommentAllOfExt",
+    "LinkedInCompany",
+    "LinkedInCompanyAllOfExt",
+    "LinkedInCue",
+    "LinkedInEntityRef",
+    "LinkedInEntry",
+    "LinkedInJob",
+    "LinkedInLinkPreview",
+    "LinkedInOrgKind",
+    "LinkedInPost",
+    "LinkedInPostAllOfExt",
+    "LinkedInPostKind",
+    "LinkedInProfile",
+    "LinkedInProfileAllOfExt",
+    "LinkedInRecommendation",
+    "LinkedInTranscript",
     "ListBlueskyComment",
     "ListBlueskyFeed",
     "ListBlueskyLike",
@@ -137,6 +221,10 @@ __all__ = [
     "ListBlueskyProfile",
     "ListBlueskyStarterPack",
     "ListBlueskyTrend",
+    "ListDouyinComment",
+    "ListDouyinPlaylist",
+    "ListDouyinPost",
+    "ListDouyinTrend",
     "ListFacebookComment",
     "ListFacebookEvent",
     "ListFacebookListing",
@@ -146,6 +234,16 @@ __all__ = [
     "ListInstagramPost",
     "ListInstagramProfile",
     "ListInstagramTrend",
+    "ListKickCategory",
+    "ListKickComment",
+    "ListKickLive",
+    "ListKickPost",
+    "ListKickProfile",
+    "ListLinkedInAd",
+    "ListLinkedInComment",
+    "ListLinkedInJob",
+    "ListLinkedInPost",
+    "ListLinkedInProfile",
     "ListPinterestBoard",
     "ListPinterestComment",
     "ListPinterestPost",
@@ -157,6 +255,8 @@ __all__ = [
     "ListRedditProfile",
     "ListRedditSubreddit",
     "ListSuggestion",
+    "ListTelegramComment",
+    "ListTelegramPost",
     "ListThreadsComment",
     "ListThreadsPost",
     "ListThreadsProfile",
@@ -170,6 +270,10 @@ __all__ = [
     "ListTwitchPost",
     "ListTwitchProfile",
     "ListTwitchScheduleSegment",
+    "ListXComment",
+    "ListXPost",
+    "ListXProfile",
+    "ListXTrend",
     "ListYouTubeComment",
     "ListYouTubePlaylist",
     "ListYouTubePost",
@@ -211,6 +315,18 @@ __all__ = [
     "RedditTranscript",
     "RedditTrophy",
     "Suggestion",
+    "TelegramComment",
+    "TelegramCommentAllOfExt",
+    "TelegramForward",
+    "TelegramInvite",
+    "TelegramKind",
+    "TelegramLinkPreview",
+    "TelegramPost",
+    "TelegramPostAllOfExt",
+    "TelegramProfile",
+    "TelegramProfileAllOfExt",
+    "TelegramReaction",
+    "TelegramReplyRef",
     "ThreadsComment",
     "ThreadsCommentAllOfExt",
     "ThreadsLinkPreview",
@@ -254,6 +370,24 @@ __all__ = [
     "TwitchProfileAllOfExt",
     "TwitchScheduleSegment",
     "TwitchTeamRef",
+    "XBroadcast",
+    "XBroadcastAllOfExt",
+    "XComment",
+    "XCommentAllOfExt",
+    "XCommunity",
+    "XCommunityRule",
+    "XCue",
+    "XPost",
+    "XPostAllOfExt",
+    "XProfile",
+    "XProfileAllOfExt",
+    "XQuoted",
+    "XReplyRef",
+    "XRepost",
+    "XSpace",
+    "XSpaceAllOfExt",
+    "XTranscript",
+    "XTrend",
     "YouTubeChapter",
     "YouTubeComment",
     "YouTubeCommentAllOfExt",
@@ -275,13 +409,18 @@ __all__ = [
 # import apis into sdk package
 from socialapihq.api.account_api import AccountApi as AccountApi
 from socialapihq.api.bluesky_api import BlueskyApi as BlueskyApi
+from socialapihq.api.douyin_api import DouyinApi as DouyinApi
 from socialapihq.api.facebook_api import FacebookApi as FacebookApi
 from socialapihq.api.instagram_api import InstagramApi as InstagramApi
+from socialapihq.api.kick_api import KickApi as KickApi
+from socialapihq.api.linked_in_api import LinkedInApi as LinkedInApi
 from socialapihq.api.pinterest_api import PinterestApi as PinterestApi
 from socialapihq.api.reddit_api import RedditApi as RedditApi
+from socialapihq.api.telegram_api import TelegramApi as TelegramApi
 from socialapihq.api.threads_api import ThreadsApi as ThreadsApi
 from socialapihq.api.tik_tok_api import TikTokApi as TikTokApi
 from socialapihq.api.twitch_api import TwitchApi as TwitchApi
+from socialapihq.api.x_api import XApi as XApi
 from socialapihq.api.you_tube_api import YouTubeApi as YouTubeApi
 
 # import ApiClient
@@ -314,6 +453,24 @@ from socialapihq.models.bluesky_repost import BlueskyRepost as BlueskyRepost
 from socialapihq.models.bluesky_starter_pack import BlueskyStarterPack as BlueskyStarterPack
 from socialapihq.models.bluesky_trend import BlueskyTrend as BlueskyTrend
 from socialapihq.models.credits_body import CreditsBody as CreditsBody
+from socialapihq.models.douyin_comment import DouyinComment as DouyinComment
+from socialapihq.models.douyin_comment_all_of_ext import DouyinCommentAllOfExt as DouyinCommentAllOfExt
+from socialapihq.models.douyin_hashtag import DouyinHashtag as DouyinHashtag
+from socialapihq.models.douyin_hashtag_all_of_ext import DouyinHashtagAllOfExt as DouyinHashtagAllOfExt
+from socialapihq.models.douyin_live import DouyinLive as DouyinLive
+from socialapihq.models.douyin_live_all_of_ext import DouyinLiveAllOfExt as DouyinLiveAllOfExt
+from socialapihq.models.douyin_playlist import DouyinPlaylist as DouyinPlaylist
+from socialapihq.models.douyin_playlist_all_of_ext import DouyinPlaylistAllOfExt as DouyinPlaylistAllOfExt
+from socialapihq.models.douyin_post import DouyinPost as DouyinPost
+from socialapihq.models.douyin_post_all_of_ext import DouyinPostAllOfExt as DouyinPostAllOfExt
+from socialapihq.models.douyin_post_kind import DouyinPostKind as DouyinPostKind
+from socialapihq.models.douyin_profile import DouyinProfile as DouyinProfile
+from socialapihq.models.douyin_profile_all_of_ext import DouyinProfileAllOfExt as DouyinProfileAllOfExt
+from socialapihq.models.douyin_series_ref import DouyinSeriesRef as DouyinSeriesRef
+from socialapihq.models.douyin_sound import DouyinSound as DouyinSound
+from socialapihq.models.douyin_sound_all_of_ext import DouyinSoundAllOfExt as DouyinSoundAllOfExt
+from socialapihq.models.douyin_sound_ref import DouyinSoundRef as DouyinSoundRef
+from socialapihq.models.douyin_trend import DouyinTrend as DouyinTrend
 from socialapihq.models.error_body import ErrorBody as ErrorBody
 from socialapihq.models.error_code import ErrorCode as ErrorCode
 from socialapihq.models.facebook_caption_track import FacebookCaptionTrack as FacebookCaptionTrack
@@ -353,6 +510,11 @@ from socialapihq.models.item_bluesky_list import ItemBlueskyList as ItemBlueskyL
 from socialapihq.models.item_bluesky_post import ItemBlueskyPost as ItemBlueskyPost
 from socialapihq.models.item_bluesky_profile import ItemBlueskyProfile as ItemBlueskyProfile
 from socialapihq.models.item_bluesky_starter_pack import ItemBlueskyStarterPack as ItemBlueskyStarterPack
+from socialapihq.models.item_douyin_hashtag import ItemDouyinHashtag as ItemDouyinHashtag
+from socialapihq.models.item_douyin_live import ItemDouyinLive as ItemDouyinLive
+from socialapihq.models.item_douyin_post import ItemDouyinPost as ItemDouyinPost
+from socialapihq.models.item_douyin_profile import ItemDouyinProfile as ItemDouyinProfile
+from socialapihq.models.item_douyin_sound import ItemDouyinSound as ItemDouyinSound
 from socialapihq.models.item_facebook_event import ItemFacebookEvent as ItemFacebookEvent
 from socialapihq.models.item_facebook_listing import ItemFacebookListing as ItemFacebookListing
 from socialapihq.models.item_facebook_post import ItemFacebookPost as ItemFacebookPost
@@ -362,6 +524,17 @@ from socialapihq.models.item_instagram_place import ItemInstagramPlace as ItemIn
 from socialapihq.models.item_instagram_post import ItemInstagramPost as ItemInstagramPost
 from socialapihq.models.item_instagram_profile import ItemInstagramProfile as ItemInstagramProfile
 from socialapihq.models.item_instagram_sound import ItemInstagramSound as ItemInstagramSound
+from socialapihq.models.item_kick_category import ItemKickCategory as ItemKickCategory
+from socialapihq.models.item_kick_live import ItemKickLive as ItemKickLive
+from socialapihq.models.item_kick_post import ItemKickPost as ItemKickPost
+from socialapihq.models.item_kick_profile import ItemKickProfile as ItemKickProfile
+from socialapihq.models.item_kick_transcript import ItemKickTranscript as ItemKickTranscript
+from socialapihq.models.item_linked_in_ad import ItemLinkedInAd as ItemLinkedInAd
+from socialapihq.models.item_linked_in_company import ItemLinkedInCompany as ItemLinkedInCompany
+from socialapihq.models.item_linked_in_job import ItemLinkedInJob as ItemLinkedInJob
+from socialapihq.models.item_linked_in_post import ItemLinkedInPost as ItemLinkedInPost
+from socialapihq.models.item_linked_in_profile import ItemLinkedInProfile as ItemLinkedInProfile
+from socialapihq.models.item_linked_in_transcript import ItemLinkedInTranscript as ItemLinkedInTranscript
 from socialapihq.models.item_pinterest_board import ItemPinterestBoard as ItemPinterestBoard
 from socialapihq.models.item_pinterest_post import ItemPinterestPost as ItemPinterestPost
 from socialapihq.models.item_pinterest_profile import ItemPinterestProfile as ItemPinterestProfile
@@ -371,6 +544,9 @@ from socialapihq.models.item_reddit_post import ItemRedditPost as ItemRedditPost
 from socialapihq.models.item_reddit_profile import ItemRedditProfile as ItemRedditProfile
 from socialapihq.models.item_reddit_subreddit import ItemRedditSubreddit as ItemRedditSubreddit
 from socialapihq.models.item_reddit_transcript import ItemRedditTranscript as ItemRedditTranscript
+from socialapihq.models.item_telegram_invite import ItemTelegramInvite as ItemTelegramInvite
+from socialapihq.models.item_telegram_post import ItemTelegramPost as ItemTelegramPost
+from socialapihq.models.item_telegram_profile import ItemTelegramProfile as ItemTelegramProfile
 from socialapihq.models.item_threads_post import ItemThreadsPost as ItemThreadsPost
 from socialapihq.models.item_threads_profile import ItemThreadsProfile as ItemThreadsProfile
 from socialapihq.models.item_tik_tok_hashtag import ItemTikTokHashtag as ItemTikTokHashtag
@@ -383,11 +559,53 @@ from socialapihq.models.item_twitch_category import ItemTwitchCategory as ItemTw
 from socialapihq.models.item_twitch_live import ItemTwitchLive as ItemTwitchLive
 from socialapihq.models.item_twitch_post import ItemTwitchPost as ItemTwitchPost
 from socialapihq.models.item_twitch_profile import ItemTwitchProfile as ItemTwitchProfile
+from socialapihq.models.item_x_broadcast import ItemXBroadcast as ItemXBroadcast
+from socialapihq.models.item_x_community import ItemXCommunity as ItemXCommunity
+from socialapihq.models.item_x_post import ItemXPost as ItemXPost
+from socialapihq.models.item_x_profile import ItemXProfile as ItemXProfile
+from socialapihq.models.item_x_space import ItemXSpace as ItemXSpace
+from socialapihq.models.item_x_transcript import ItemXTranscript as ItemXTranscript
 from socialapihq.models.item_you_tube_hashtag import ItemYouTubeHashtag as ItemYouTubeHashtag
 from socialapihq.models.item_you_tube_playlist import ItemYouTubePlaylist as ItemYouTubePlaylist
 from socialapihq.models.item_you_tube_post import ItemYouTubePost as ItemYouTubePost
 from socialapihq.models.item_you_tube_profile import ItemYouTubeProfile as ItemYouTubeProfile
 from socialapihq.models.item_you_tube_transcript import ItemYouTubeTranscript as ItemYouTubeTranscript
+from socialapihq.models.kick_category import KickCategory as KickCategory
+from socialapihq.models.kick_category_ref import KickCategoryRef as KickCategoryRef
+from socialapihq.models.kick_comment import KickComment as KickComment
+from socialapihq.models.kick_comment_all_of_ext import KickCommentAllOfExt as KickCommentAllOfExt
+from socialapihq.models.kick_cue import KickCue as KickCue
+from socialapihq.models.kick_link import KickLink as KickLink
+from socialapihq.models.kick_live import KickLive as KickLive
+from socialapihq.models.kick_live_all_of_ext import KickLiveAllOfExt as KickLiveAllOfExt
+from socialapihq.models.kick_post import KickPost as KickPost
+from socialapihq.models.kick_post_all_of_ext import KickPostAllOfExt as KickPostAllOfExt
+from socialapihq.models.kick_post_kind import KickPostKind as KickPostKind
+from socialapihq.models.kick_profile import KickProfile as KickProfile
+from socialapihq.models.kick_profile_all_of_ext import KickProfileAllOfExt as KickProfileAllOfExt
+from socialapihq.models.kick_social import KickSocial as KickSocial
+from socialapihq.models.kick_transcript import KickTranscript as KickTranscript
+from socialapihq.models.linked_in_ad import LinkedInAd as LinkedInAd
+from socialapihq.models.linked_in_ad_country import LinkedInAdCountry as LinkedInAdCountry
+from socialapihq.models.linked_in_ad_targeting import LinkedInAdTargeting as LinkedInAdTargeting
+from socialapihq.models.linked_in_card import LinkedInCard as LinkedInCard
+from socialapihq.models.linked_in_comment import LinkedInComment as LinkedInComment
+from socialapihq.models.linked_in_comment_all_of_ext import LinkedInCommentAllOfExt as LinkedInCommentAllOfExt
+from socialapihq.models.linked_in_company import LinkedInCompany as LinkedInCompany
+from socialapihq.models.linked_in_company_all_of_ext import LinkedInCompanyAllOfExt as LinkedInCompanyAllOfExt
+from socialapihq.models.linked_in_cue import LinkedInCue as LinkedInCue
+from socialapihq.models.linked_in_entity_ref import LinkedInEntityRef as LinkedInEntityRef
+from socialapihq.models.linked_in_entry import LinkedInEntry as LinkedInEntry
+from socialapihq.models.linked_in_job import LinkedInJob as LinkedInJob
+from socialapihq.models.linked_in_link_preview import LinkedInLinkPreview as LinkedInLinkPreview
+from socialapihq.models.linked_in_org_kind import LinkedInOrgKind as LinkedInOrgKind
+from socialapihq.models.linked_in_post import LinkedInPost as LinkedInPost
+from socialapihq.models.linked_in_post_all_of_ext import LinkedInPostAllOfExt as LinkedInPostAllOfExt
+from socialapihq.models.linked_in_post_kind import LinkedInPostKind as LinkedInPostKind
+from socialapihq.models.linked_in_profile import LinkedInProfile as LinkedInProfile
+from socialapihq.models.linked_in_profile_all_of_ext import LinkedInProfileAllOfExt as LinkedInProfileAllOfExt
+from socialapihq.models.linked_in_recommendation import LinkedInRecommendation as LinkedInRecommendation
+from socialapihq.models.linked_in_transcript import LinkedInTranscript as LinkedInTranscript
 from socialapihq.models.list_bluesky_comment import ListBlueskyComment as ListBlueskyComment
 from socialapihq.models.list_bluesky_feed import ListBlueskyFeed as ListBlueskyFeed
 from socialapihq.models.list_bluesky_like import ListBlueskyLike as ListBlueskyLike
@@ -396,6 +614,10 @@ from socialapihq.models.list_bluesky_post import ListBlueskyPost as ListBlueskyP
 from socialapihq.models.list_bluesky_profile import ListBlueskyProfile as ListBlueskyProfile
 from socialapihq.models.list_bluesky_starter_pack import ListBlueskyStarterPack as ListBlueskyStarterPack
 from socialapihq.models.list_bluesky_trend import ListBlueskyTrend as ListBlueskyTrend
+from socialapihq.models.list_douyin_comment import ListDouyinComment as ListDouyinComment
+from socialapihq.models.list_douyin_playlist import ListDouyinPlaylist as ListDouyinPlaylist
+from socialapihq.models.list_douyin_post import ListDouyinPost as ListDouyinPost
+from socialapihq.models.list_douyin_trend import ListDouyinTrend as ListDouyinTrend
 from socialapihq.models.list_facebook_comment import ListFacebookComment as ListFacebookComment
 from socialapihq.models.list_facebook_event import ListFacebookEvent as ListFacebookEvent
 from socialapihq.models.list_facebook_listing import ListFacebookListing as ListFacebookListing
@@ -405,6 +627,16 @@ from socialapihq.models.list_instagram_highlight import ListInstagramHighlight a
 from socialapihq.models.list_instagram_post import ListInstagramPost as ListInstagramPost
 from socialapihq.models.list_instagram_profile import ListInstagramProfile as ListInstagramProfile
 from socialapihq.models.list_instagram_trend import ListInstagramTrend as ListInstagramTrend
+from socialapihq.models.list_kick_category import ListKickCategory as ListKickCategory
+from socialapihq.models.list_kick_comment import ListKickComment as ListKickComment
+from socialapihq.models.list_kick_live import ListKickLive as ListKickLive
+from socialapihq.models.list_kick_post import ListKickPost as ListKickPost
+from socialapihq.models.list_kick_profile import ListKickProfile as ListKickProfile
+from socialapihq.models.list_linked_in_ad import ListLinkedInAd as ListLinkedInAd
+from socialapihq.models.list_linked_in_comment import ListLinkedInComment as ListLinkedInComment
+from socialapihq.models.list_linked_in_job import ListLinkedInJob as ListLinkedInJob
+from socialapihq.models.list_linked_in_post import ListLinkedInPost as ListLinkedInPost
+from socialapihq.models.list_linked_in_profile import ListLinkedInProfile as ListLinkedInProfile
 from socialapihq.models.list_pinterest_board import ListPinterestBoard as ListPinterestBoard
 from socialapihq.models.list_pinterest_comment import ListPinterestComment as ListPinterestComment
 from socialapihq.models.list_pinterest_post import ListPinterestPost as ListPinterestPost
@@ -416,6 +648,8 @@ from socialapihq.models.list_reddit_post import ListRedditPost as ListRedditPost
 from socialapihq.models.list_reddit_profile import ListRedditProfile as ListRedditProfile
 from socialapihq.models.list_reddit_subreddit import ListRedditSubreddit as ListRedditSubreddit
 from socialapihq.models.list_suggestion import ListSuggestion as ListSuggestion
+from socialapihq.models.list_telegram_comment import ListTelegramComment as ListTelegramComment
+from socialapihq.models.list_telegram_post import ListTelegramPost as ListTelegramPost
 from socialapihq.models.list_threads_comment import ListThreadsComment as ListThreadsComment
 from socialapihq.models.list_threads_post import ListThreadsPost as ListThreadsPost
 from socialapihq.models.list_threads_profile import ListThreadsProfile as ListThreadsProfile
@@ -429,6 +663,10 @@ from socialapihq.models.list_twitch_live import ListTwitchLive as ListTwitchLive
 from socialapihq.models.list_twitch_post import ListTwitchPost as ListTwitchPost
 from socialapihq.models.list_twitch_profile import ListTwitchProfile as ListTwitchProfile
 from socialapihq.models.list_twitch_schedule_segment import ListTwitchScheduleSegment as ListTwitchScheduleSegment
+from socialapihq.models.list_x_comment import ListXComment as ListXComment
+from socialapihq.models.list_x_post import ListXPost as ListXPost
+from socialapihq.models.list_x_profile import ListXProfile as ListXProfile
+from socialapihq.models.list_x_trend import ListXTrend as ListXTrend
 from socialapihq.models.list_you_tube_comment import ListYouTubeComment as ListYouTubeComment
 from socialapihq.models.list_you_tube_playlist import ListYouTubePlaylist as ListYouTubePlaylist
 from socialapihq.models.list_you_tube_post import ListYouTubePost as ListYouTubePost
@@ -470,6 +708,18 @@ from socialapihq.models.reddit_subreddit import RedditSubreddit as RedditSubredd
 from socialapihq.models.reddit_transcript import RedditTranscript as RedditTranscript
 from socialapihq.models.reddit_trophy import RedditTrophy as RedditTrophy
 from socialapihq.models.suggestion import Suggestion as Suggestion
+from socialapihq.models.telegram_comment import TelegramComment as TelegramComment
+from socialapihq.models.telegram_comment_all_of_ext import TelegramCommentAllOfExt as TelegramCommentAllOfExt
+from socialapihq.models.telegram_forward import TelegramForward as TelegramForward
+from socialapihq.models.telegram_invite import TelegramInvite as TelegramInvite
+from socialapihq.models.telegram_kind import TelegramKind as TelegramKind
+from socialapihq.models.telegram_link_preview import TelegramLinkPreview as TelegramLinkPreview
+from socialapihq.models.telegram_post import TelegramPost as TelegramPost
+from socialapihq.models.telegram_post_all_of_ext import TelegramPostAllOfExt as TelegramPostAllOfExt
+from socialapihq.models.telegram_profile import TelegramProfile as TelegramProfile
+from socialapihq.models.telegram_profile_all_of_ext import TelegramProfileAllOfExt as TelegramProfileAllOfExt
+from socialapihq.models.telegram_reaction import TelegramReaction as TelegramReaction
+from socialapihq.models.telegram_reply_ref import TelegramReplyRef as TelegramReplyRef
 from socialapihq.models.threads_comment import ThreadsComment as ThreadsComment
 from socialapihq.models.threads_comment_all_of_ext import ThreadsCommentAllOfExt as ThreadsCommentAllOfExt
 from socialapihq.models.threads_link_preview import ThreadsLinkPreview as ThreadsLinkPreview
@@ -513,6 +763,24 @@ from socialapihq.models.twitch_profile import TwitchProfile as TwitchProfile
 from socialapihq.models.twitch_profile_all_of_ext import TwitchProfileAllOfExt as TwitchProfileAllOfExt
 from socialapihq.models.twitch_schedule_segment import TwitchScheduleSegment as TwitchScheduleSegment
 from socialapihq.models.twitch_team_ref import TwitchTeamRef as TwitchTeamRef
+from socialapihq.models.x_broadcast import XBroadcast as XBroadcast
+from socialapihq.models.x_broadcast_all_of_ext import XBroadcastAllOfExt as XBroadcastAllOfExt
+from socialapihq.models.x_comment import XComment as XComment
+from socialapihq.models.x_comment_all_of_ext import XCommentAllOfExt as XCommentAllOfExt
+from socialapihq.models.x_community import XCommunity as XCommunity
+from socialapihq.models.x_community_rule import XCommunityRule as XCommunityRule
+from socialapihq.models.x_cue import XCue as XCue
+from socialapihq.models.x_post import XPost as XPost
+from socialapihq.models.x_post_all_of_ext import XPostAllOfExt as XPostAllOfExt
+from socialapihq.models.x_profile import XProfile as XProfile
+from socialapihq.models.x_profile_all_of_ext import XProfileAllOfExt as XProfileAllOfExt
+from socialapihq.models.x_quoted import XQuoted as XQuoted
+from socialapihq.models.x_reply_ref import XReplyRef as XReplyRef
+from socialapihq.models.x_repost import XRepost as XRepost
+from socialapihq.models.x_space import XSpace as XSpace
+from socialapihq.models.x_space_all_of_ext import XSpaceAllOfExt as XSpaceAllOfExt
+from socialapihq.models.x_transcript import XTranscript as XTranscript
+from socialapihq.models.x_trend import XTrend as XTrend
 from socialapihq.models.you_tube_chapter import YouTubeChapter as YouTubeChapter
 from socialapihq.models.you_tube_comment import YouTubeComment as YouTubeComment
 from socialapihq.models.you_tube_comment_all_of_ext import YouTubeCommentAllOfExt as YouTubeCommentAllOfExt

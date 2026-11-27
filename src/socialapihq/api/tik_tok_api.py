@@ -2966,7 +2966,7 @@ class TikTokApi:
     ) -> ItemTikTokTranscript:
         """A post's captions as text with their times.
 
-        TikTok's own, generated or the author's, in the language asked for when it has it. `404` when the post has none. 5 credits.
+        TikTok's own, generated or the author's, in the language asked for when it has it. `404` when the post has none. 10 credits.
 
         :param url: The post's link.
         :type url: str
@@ -3047,7 +3047,7 @@ class TikTokApi:
     ) -> ApiResponse[ItemTikTokTranscript]:
         """A post's captions as text with their times.
 
-        TikTok's own, generated or the author's, in the language asked for when it has it. `404` when the post has none. 5 credits.
+        TikTok's own, generated or the author's, in the language asked for when it has it. `404` when the post has none. 10 credits.
 
         :param url: The post's link.
         :type url: str
@@ -3128,7 +3128,7 @@ class TikTokApi:
     ) -> RESTResponseType:
         """A post's captions as text with their times.
 
-        TikTok's own, generated or the author's, in the language asked for when it has it. `404` when the post has none. 5 credits.
+        TikTok's own, generated or the author's, in the language asked for when it has it. `404` when the post has none. 10 credits.
 
         :param url: The post's link.
         :type url: str
@@ -6855,7 +6855,7 @@ class TikTokApi:
     ) -> ListTikTokPost:
         """What the explore page shows now, by category.
 
-        For one of its categories, `all` by default. A fresh set of about 30 posts each time. 1 credit.
+        For one of its categories, `all` by default. A fresh set of about 30 posts each time. 5 credits.
 
         :param category: The explore page's category. Default `all`.
         :type category: str
@@ -6928,7 +6928,7 @@ class TikTokApi:
     ) -> ApiResponse[ListTikTokPost]:
         """What the explore page shows now, by category.
 
-        For one of its categories, `all` by default. A fresh set of about 30 posts each time. 1 credit.
+        For one of its categories, `all` by default. A fresh set of about 30 posts each time. 5 credits.
 
         :param category: The explore page's category. Default `all`.
         :type category: str
@@ -7001,7 +7001,7 @@ class TikTokApi:
     ) -> RESTResponseType:
         """What the explore page shows now, by category.
 
-        For one of its categories, `all` by default. A fresh set of about 30 posts each time. 1 credit.
+        For one of its categories, `all` by default. A fresh set of about 30 posts each time. 5 credits.
 
         :param category: The explore page's category. Default `all`.
         :type category: str

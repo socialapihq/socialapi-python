@@ -2542,7 +2542,7 @@ class FacebookApi:
     ) -> ItemFacebookTranscript:
         """A video's captions as text with their times.
 
-        Facebook's own track, in the video's language where it lists one, else a translation (`translated` says so). `404` when the video has none. 5 credits.
+        Facebook's own track, in the video's language where it lists one, else a translation (`translated` says so). `404` when the video has none. 10 credits.
 
         :param url: The video's or reel's link.
         :type url: str
@@ -2619,7 +2619,7 @@ class FacebookApi:
     ) -> ApiResponse[ItemFacebookTranscript]:
         """A video's captions as text with their times.
 
-        Facebook's own track, in the video's language where it lists one, else a translation (`translated` says so). `404` when the video has none. 5 credits.
+        Facebook's own track, in the video's language where it lists one, else a translation (`translated` says so). `404` when the video has none. 10 credits.
 
         :param url: The video's or reel's link.
         :type url: str
@@ -2696,7 +2696,7 @@ class FacebookApi:
     ) -> RESTResponseType:
         """A video's captions as text with their times.
 
-        Facebook's own track, in the video's language where it lists one, else a translation (`translated` says so). `404` when the video has none. 5 credits.
+        Facebook's own track, in the video's language where it lists one, else a translation (`translated` says so). `404` when the video has none. 10 credits.
 
         :param url: The video's or reel's link.
         :type url: str

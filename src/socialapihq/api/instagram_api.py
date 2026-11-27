@@ -673,7 +673,7 @@ class InstagramApi:
     ) -> ListInstagramPost:
         """A place's top posts with their likes and comments.
 
-        With their times. The 18 Instagram shows a visitor, no more. 1 credit.
+        With their times. The 18 Instagram shows a visitor, no more. 5 credits.
 
         :param url: The place's link (`https://www.instagram.com/explore/locations/<id>/<name>/`).
         :type url: str
@@ -750,7 +750,7 @@ class InstagramApi:
     ) -> ApiResponse[ListInstagramPost]:
         """A place's top posts with their likes and comments.
 
-        With their times. The 18 Instagram shows a visitor, no more. 1 credit.
+        With their times. The 18 Instagram shows a visitor, no more. 5 credits.
 
         :param url: The place's link (`https://www.instagram.com/explore/locations/<id>/<name>/`).
         :type url: str
@@ -827,7 +827,7 @@ class InstagramApi:
     ) -> RESTResponseType:
         """A place's top posts with their likes and comments.
 
-        With their times. The 18 Instagram shows a visitor, no more. 1 credit.
+        With their times. The 18 Instagram shows a visitor, no more. 5 credits.
 
         :param url: The place's link (`https://www.instagram.com/explore/locations/<id>/<name>/`).
         :type url: str
@@ -1280,7 +1280,7 @@ class InstagramApi:
     ) -> ListInstagramComment:
         """A post's comments with their likes, about 22 a page.
 
-        Replies, and how many a comment has, are not shown to a visitor. 1 credit a page.
+        Replies, and how many a comment has, are not shown to a visitor. 5 credits a page.
 
         :param url: The post's link.
         :type url: str
@@ -1361,7 +1361,7 @@ class InstagramApi:
     ) -> ApiResponse[ListInstagramComment]:
         """A post's comments with their likes, about 22 a page.
 
-        Replies, and how many a comment has, are not shown to a visitor. 1 credit a page.
+        Replies, and how many a comment has, are not shown to a visitor. 5 credits a page.
 
         :param url: The post's link.
         :type url: str
@@ -1442,7 +1442,7 @@ class InstagramApi:
     ) -> RESTResponseType:
         """A post's comments with their likes, about 22 a page.
 
-        Replies, and how many a comment has, are not shown to a visitor. 1 credit a page.
+        Replies, and how many a comment has, are not shown to a visitor. 5 credits a page.
 
         :param url: The post's link.
         :type url: str
@@ -2863,7 +2863,7 @@ class InstagramApi:
     ) -> ListInstagramProfile:
         """Accounts like this one, as Instagram suggests them.
 
-        Up to 50, without their counts. Some accounts have none. 1 credit.
+        Up to 50, without their counts. Some accounts have none. 5 credits.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -2944,7 +2944,7 @@ class InstagramApi:
     ) -> ApiResponse[ListInstagramProfile]:
         """Accounts like this one, as Instagram suggests them.
 
-        Up to 50, without their counts. Some accounts have none. 1 credit.
+        Up to 50, without their counts. Some accounts have none. 5 credits.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -3025,7 +3025,7 @@ class InstagramApi:
     ) -> RESTResponseType:
         """Accounts like this one, as Instagram suggests them.
 
-        Up to 50, without their counts. Some accounts have none. 1 credit.
+        Up to 50, without their counts. Some accounts have none. 5 credits.
 
         :param handle: The username, with or without `@`.
         :type handle: str
@@ -4107,7 +4107,7 @@ class InstagramApi:
     ) -> ListInstagramPost:
         """The reels feed Instagram gives a visitor, 8 a page.
 
-        With likes, comments and times. 1 credit a page.
+        With likes, comments and times. 5 credits a page.
 
         :param cursor: `nextCursor` of the previous page.
         :type cursor: str
@@ -4180,7 +4180,7 @@ class InstagramApi:
     ) -> ApiResponse[ListInstagramPost]:
         """The reels feed Instagram gives a visitor, 8 a page.
 
-        With likes, comments and times. 1 credit a page.
+        With likes, comments and times. 5 credits a page.
 
         :param cursor: `nextCursor` of the previous page.
         :type cursor: str
@@ -4253,7 +4253,7 @@ class InstagramApi:
     ) -> RESTResponseType:
         """The reels feed Instagram gives a visitor, 8 a page.
 
-        With likes, comments and times. 1 credit a page.
+        With likes, comments and times. 5 credits a page.
 
         :param cursor: `nextCursor` of the previous page.
         :type cursor: str
